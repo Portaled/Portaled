@@ -176,15 +176,78 @@ namespace Portaled.Service.DBObj
     }
 
 
-    public class CLandBlock : DBObjEx<Portaled.Interop.CLandBlock> { }
-    public class CLandBlockInfo : DBObjEx<Portaled.Interop.CLandBlockInfo> { }
-    public class CEnvCell : DBObjEx<Portaled.Interop.CEnvCell> { }
-    public class CGfxObj : DBObjEx<Portaled.Interop.CGfxObj> { }
+    public class CLandBlock : DBObjEx<Portaled.Interop.CLandBlock> 
+    {
+        internal override void OnAfterBlockingLoadInto()
+        {
+        }
+
+        internal override void OnBeforeBlockingLoadInto()
+        {
+        }
+    }
+    public class CLandBlockInfo : DBObjEx<Portaled.Interop.CLandBlockInfo> 
+    {
+        internal override void OnAfterBlockingGetFromDisk()
+        {
+        }
+
+        internal override void OnAfterBlockingLoadInto()
+        {
+        }
+    }
+    public class CEnvCell : DBObjEx<Portaled.Interop.CEnvCell> 
+    {
+        internal override void OnAfterBlockingLoadInto()
+        {
+        }
+
+        internal override void OnAfterBlockingGetFromDisk()
+        {
+        }
+    }
+    public class CGfxObj : DBObjEx<Portaled.Interop.CGfxObj> 
+    {
+        internal override void OnAfterBlockingGetFromDisk()
+        {
+        }
+
+        internal override void OnAfterBlockingLoadInto()
+        {
+        }
+    }
     public class CSetup : DBObjEx<Portaled.Interop.CSetup>
     {
+        internal override void OnAfterBlockingLoadInto()
+        {
+        }
+
+        internal override void OnAfterBlockingGetFromDisk()
+        {
+        }
     }
-    public class CAnimation : DBObjEx<Portaled.Interop.CAnimation> { }
-    public class Palette : DBObjEx<Portaled.Interop.Palette> { }
+    public class CAnimation : DBObjEx<Portaled.Interop.CAnimation> 
+    {
+        internal override void OnAfterBlockingGetFromDisk()
+        {
+        }
+
+        internal override void OnAfterBlockingLoadInto()
+        {
+        }
+    }
+
+    public class Palette : DBObjEx<Portaled.Interop.Palette> 
+    {
+        internal override void OnAfterBlockingLoadInto()
+        {
+        }
+
+        internal override void OnAfterBlockingGetFromDisk()
+        {
+        }
+    }
+
     public class ImgTex : DBObjEx<Portaled.Interop.ImgTex>
     {
         internal override void OnBeforeBlockingLoadInto()
@@ -257,9 +320,23 @@ namespace Portaled.Service.DBObj
     }
     public class CSurface : DBObjEx<Portaled.Interop.CSurface>
     {
+        internal override void OnAfterBlockingLoadInto()
+        {
+        }
+
+        internal override void OnAfterBlockingGetFromDisk()
+        {
+        }
     }
     public class CMotionTable : DBObjEx<Portaled.Interop.CMotionTable>
     {
+        internal override void OnAfterBlockingGetFromDisk()
+        {
+        }
+
+        internal override void OnAfterBlockingLoadInto()
+        {
+        }
     }
     public class DBWave : DBObjEx<Portaled.Interop.DBWave>
     {
@@ -275,53 +352,311 @@ namespace Portaled.Service.DBObj
     }
     public class CEnvironment : DBObjEx<Portaled.Interop.CEnvironment>
     {
+        internal override void OnAfterBlockingLoadInto()
+        {
+        }
+        internal override void OnAfterBlockingGetFromDisk()
+        {
+        }
     }
     public class ChatPoseTable : DBObjEx<Portaled.Interop.ChatPoseTable>
     {
-        
+        internal override void OnAfterBlockingGetFromDisk()
+        {
+        }
+        internal override void OnAfterBlockingLoadInto()
+        {
+        }
     }
     public class cWObjHierRootNode : DBObjEx<Portaled.Interop.CWObjHierRootNode>
     {
-
+        internal override void OnAfterBlockingGetFromDisk()
+        {
+        }
+        internal override void OnAfterBlockingLoadInto()
+        {
+        }
     }
     public class BadData : DBObjEx<Portaled.Interop.BadData>
     {
+        internal override void OnAfterBlockingGetFromDisk()
+        {
+        }
+        internal override void OnAfterBlockingLoadInto()
+        {
+        }
     }
 
     public class TabooTable : DBObjEx<Portaled.Interop.TabooTable>
     {
+        internal override void OnAfterBlockingGetFromDisk()
+        {
+        }
+        internal override void OnAfterBlockingLoadInto()
+        {
+        }
     }
 
     public class DBFile2IDTable : DBObjEx<Portaled.Interop.DBFile2IDTable>
     {
+        internal override void OnAfterBlockingGetFromDisk()
+        {
+        }
+        internal override void OnAfterBlockingLoadInto()
+        {
+        }
     }
 
-    public class NameFilterTable : DBObjEx<Portaled.Interop.NameFilterTable> { }
-    public class PalSet : DBObjEx<Portaled.Interop.PalSet> { }
-    public class ClothingTable : DBObjEx<Portaled.Interop.ClothingTable> { }
-    public class GfxObjDegradeInfo : DBObjEx<Portaled.Interop.GfxObjDegradeInfo> { }
-    public class Scene : DBObjEx<Portaled.Interop.Scene> { }
-    public class CRegionDesc : DBObjEx<Portaled.Interop.CRegionDesc> { }
-    public class CMasterInputMap : DBObjEx<Portaled.Interop.CMasterInputMap> { }
-    public class RenderTexture : DBObjEx<Portaled.Interop.RenderTexture> { }
-    public class RenderMaterial : DBObjEx<Portaled.Interop.RenderMaterial> { }
-    public class MaterialModifier : DBObjEx<Portaled.Interop.MaterialModifier> { }
-    public class MaterialInstance : DBObjEx<Portaled.Interop.MaterialInstance> { }
-    public class CSoundTable : DBObjEx<Portaled.Interop.CSoundTable> { }
-    public class LayoutDesc : DBObjEx<Portaled.Interop.LayoutDesc> { }
-    public class EnumMapper : DBObjEx<Portaled.Interop.EnumMapper> { }
-    public class StringTable : DBObjEx<Portaled.Interop.StringTable> { }
-    public class EnumIDMap : DBObjEx<Portaled.Interop.EnumIDMap> { }
-    public class ActionMap : DBObjEx<Portaled.Interop.ActionMap> { }
-    public class DualEnumIDMap : DBObjEx<Portaled.Interop.DualEnumIDMap> { }
-    public class ACString : DBObjEx<Portaled.Interop.ACString> { }
-    public class ParticleEmitterInfo : DBObjEx<Portaled.Interop.ParticleEmitterInfo> { }
-    public class PhysicsScript : DBObjEx<Portaled.Interop.PhysicsScript> { }
-    public class PhysicsScriptTable : DBObjEx<Portaled.Interop.PhysicsScriptTable> { }
-    public class MasterProperty : DBObjEx<Portaled.Interop.MasterProperty> { }
-    public class Font : DBObjEx<Portaled.Interop.Font> { }
-    public class FontLocal : DBObjEx<Portaled.Interop.FontLocal> { }
-    public class CLanguageInfo : DBObjEx<Portaled.Interop.CLanguageInfo> { }
-    public class DBPropertyCollection : DBObjEx<Portaled.Interop.DBPropertyCollection> { }
-    public class RenderMesh : DBObjEx<Portaled.Interop.RenderMesh> { }
+    public class NameFilterTable : DBObjEx<Portaled.Interop.NameFilterTable> 
+    {
+        internal override void OnAfterBlockingGetFromDisk()
+        {
+        }
+        internal override void OnAfterBlockingLoadInto()
+        {
+        }
+    }
+    public class PalSet : DBObjEx<Portaled.Interop.PalSet> 
+    {
+        internal override void OnAfterBlockingGetFromDisk()
+        {
+        }
+        internal override void OnAfterBlockingLoadInto()
+        {
+        }
+    }
+    public class ClothingTable : DBObjEx<Portaled.Interop.ClothingTable> 
+    {
+        internal override void OnAfterBlockingGetFromDisk()
+        {
+        }
+        internal override void OnAfterBlockingLoadInto()
+        {
+        }
+    }
+    public class GfxObjDegradeInfo : DBObjEx<Portaled.Interop.GfxObjDegradeInfo> 
+    {
+        internal override void OnAfterBlockingGetFromDisk()
+        {
+        }
+        internal override void OnAfterBlockingLoadInto()
+        {
+        }
+    }
+    public class Scene : DBObjEx<Portaled.Interop.Scene> 
+    {
+        internal override void OnAfterBlockingGetFromDisk()
+        {
+        }
+        internal override void OnAfterBlockingLoadInto()
+        {
+        }
+    }
+    public class CRegionDesc : DBObjEx<Portaled.Interop.CRegionDesc> 
+    {
+        internal override void OnAfterBlockingGetFromDisk()
+        {
+        }
+        internal override void OnAfterBlockingLoadInto()
+        {
+        }
+    }
+    public class CMasterInputMap : DBObjEx<Portaled.Interop.CMasterInputMap> 
+    {
+        internal override void OnAfterBlockingGetFromDisk()
+        {
+        }
+        internal override void OnAfterBlockingLoadInto()
+        {
+        }
+    }
+    public class RenderTexture : DBObjEx<Portaled.Interop.RenderTexture> 
+    {
+        internal override void OnAfterBlockingGetFromDisk()
+        {
+        }
+        internal override void OnAfterBlockingLoadInto()
+        {
+        }
+    }
+    public class RenderMaterial : DBObjEx<Portaled.Interop.RenderMaterial> 
+    {
+        internal override void OnAfterBlockingGetFromDisk()
+        {
+        }
+        internal override void OnAfterBlockingLoadInto()
+        {
+        }
+    }
+    public class MaterialModifier : DBObjEx<Portaled.Interop.MaterialModifier> 
+    {
+        internal override void OnAfterBlockingGetFromDisk()
+        {
+        }
+        internal override void OnAfterBlockingLoadInto()
+        {
+        }
+    }
+    public class MaterialInstance : DBObjEx<Portaled.Interop.MaterialInstance> 
+    {
+        internal override void OnAfterBlockingGetFromDisk()
+        {
+        }
+        internal override void OnAfterBlockingLoadInto()
+        {
+        }
+    }
+    public class CSoundTable : DBObjEx<Portaled.Interop.CSoundTable> 
+    {
+        internal override void OnAfterBlockingGetFromDisk()
+        {
+        }
+        internal override void OnAfterBlockingLoadInto()
+        {
+        }
+    }
+    public class LayoutDesc : DBObjEx<Portaled.Interop.LayoutDesc> 
+    {
+        internal override void OnAfterBlockingGetFromDisk()
+        {
+        }
+        internal override void OnAfterBlockingLoadInto()
+        {
+        }
+    }
+    public class EnumMapper : DBObjEx<Portaled.Interop.EnumMapper> 
+    {
+        internal override void OnAfterBlockingGetFromDisk()
+        {
+        }
+        internal override void OnAfterBlockingLoadInto()
+        {
+        }
+    }
+    public class StringTable : DBObjEx<Portaled.Interop.StringTable> 
+    {
+        internal override void OnAfterBlockingGetFromDisk()
+        {
+        }
+        internal override void OnAfterBlockingLoadInto()
+        {
+        }
+    }
+    public class EnumIDMap : DBObjEx<Portaled.Interop.EnumIDMap> 
+    {
+        internal override void OnAfterBlockingGetFromDisk()
+        {
+        }
+        internal override void OnAfterBlockingLoadInto()
+        {
+        }
+    }
+    public class ActionMap : DBObjEx<Portaled.Interop.ActionMap> 
+    {
+        internal override void OnAfterBlockingGetFromDisk()
+        {
+        }
+        internal override void OnAfterBlockingLoadInto()
+        {
+        }
+    }
+    public class DualEnumIDMap : DBObjEx<Portaled.Interop.DualEnumIDMap> 
+    {
+        internal override void OnAfterBlockingGetFromDisk()
+        {
+        }
+        internal override void OnAfterBlockingLoadInto()
+        {
+        }
+    }
+    public class ACString : DBObjEx<Portaled.Interop.ACString> 
+    {
+        internal override void OnAfterBlockingGetFromDisk()
+        {
+        }
+        internal override void OnAfterBlockingLoadInto()
+        {
+        }
+    }
+    public class ParticleEmitterInfo : DBObjEx<Portaled.Interop.ParticleEmitterInfo> 
+    {
+        internal override void OnAfterBlockingGetFromDisk()
+        {
+        }
+        internal override void OnAfterBlockingLoadInto()
+        {
+        }
+    }
+    public class PhysicsScript : DBObjEx<Portaled.Interop.PhysicsScript> 
+    {
+        internal override void OnAfterBlockingGetFromDisk()
+        {
+        }
+        internal override void OnAfterBlockingLoadInto()
+        {
+        }
+    }
+    public class PhysicsScriptTable : DBObjEx<Portaled.Interop.PhysicsScriptTable> 
+    {
+        internal override void OnAfterBlockingGetFromDisk()
+        {
+        }
+        internal override void OnAfterBlockingLoadInto()
+        {
+        }
+    }
+    public class MasterProperty : DBObjEx<Portaled.Interop.MasterProperty> 
+    {
+        internal override void OnAfterBlockingGetFromDisk()
+        {
+        }
+        internal override void OnAfterBlockingLoadInto()
+        {
+        }
+    }
+    public class Font : DBObjEx<Portaled.Interop.Font> 
+    {
+        internal override void OnAfterBlockingGetFromDisk()
+        {
+        }
+        internal override void OnAfterBlockingLoadInto()
+        {
+        }
+    }
+    public class FontLocal : DBObjEx<Portaled.Interop.FontLocal> 
+    {
+        internal override void OnAfterBlockingGetFromDisk()
+        {
+        }
+        internal override void OnAfterBlockingLoadInto()
+        {
+        }
+    }
+    public class CLanguageInfo : DBObjEx<Portaled.Interop.CLanguageInfo> 
+    {
+        internal override void OnAfterBlockingGetFromDisk()
+        {
+        }
+        internal override void OnAfterBlockingLoadInto()
+        {
+        }
+    }
+    public class DBPropertyCollection : DBObjEx<Portaled.Interop.DBPropertyCollection> 
+    {
+        internal override void OnAfterBlockingGetFromDisk()
+        {
+        }
+        internal override void OnAfterBlockingLoadInto()
+        {
+        }
+    }
+    public class RenderMesh : DBObjEx<Portaled.Interop.RenderMesh>
+    {
+        internal override void OnAfterBlockingGetFromDisk()
+        {
+        }
+        internal override void OnAfterBlockingLoadInto()
+        {
+        }
+    }
 }

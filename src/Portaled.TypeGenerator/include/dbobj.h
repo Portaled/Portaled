@@ -747,6 +747,13 @@ struct CPartArray
 };
 
 
+const __declspec(align(8)) struct PhysicsScriptTable
+{
+	SerializeUsingPackDBObj packobj;
+	HashTable<unsigned long, PhysicsScriptTableData*, 0> script_table;
+};
+
+
 struct __declspec(align(4)) CPhysicsObj
 {
 	LongHashData hashdata;
@@ -1769,5 +1776,281 @@ struct EnumIDMap
 	 PropertyCollection propertycollection;
 	 DBObj dbobj;
  };
+
+
+ //---
+
+
+ struct SoundTableData
+ {
+	 PackObj packobj;
+	 IntrusiveHashData<unsigned long, SoundTableData*> hashdata;
+	 IntrusiveHashTable<unsigned long, SoundTableData*, 0> sound_hash_;
+	 unsigned int num_stdatas_;
+	 SoundData* data_;
+ };
+
+ const __declspec(align(8)) struct CSoundTable
+ {
+	 SerializeUsingPackDBObj packobj;
+	 SoundTableData sound_data_;
+ };
+
+
+ //---
+
+
+
+
+ struct StateDesc
+ {
+	 void* vfptr;
+	 unsigned int m_uiIncorporationFlags;
+	 unsigned int m_stateID;
+	 bool m_bIsCode;
+	 bool m_bPassToChildren;
+	 int m_x;
+	 int m_y;
+	 int m_width;
+	 int m_height;
+	 int m_zLevel;
+	 PropertyCollection m_properties;
+	 SmartArray<MediaDesc*> m_media;
+ };
+
+
+ __unaligned __declspec(align(4)) struct ElementDesc
+ {
+	 StateDesc statedesc;
+	 unsigned int m_elementID;
+	 unsigned int m_type;
+	 unsigned int m_engineType;
+	 unsigned int m_baseElement;
+	 unsigned int m_baseLayout; //DID
+	 unsigned int m_defaultState;
+	 unsigned int m_leftEdge;
+	 unsigned int m_topEdge;
+	 unsigned int m_rightEdge;
+	 unsigned int m_bottomEdge;
+	 HashTable<unsigned long, StateDesc, 0> m_states;
+	 HashTable<unsigned long, ElementDesc, 0> m_children;
+	 unsigned int m_uiReadOrder;
+	 PStringBase_char m_strComments;
+	 PStringBase_char m_strName;
+ };
+
+
+ const struct __declspec(align(8)) LayoutDesc
+ {
+	 DBObj dbobj;
+	 unsigned int m_displayWidth;
+	 unsigned int m_displayHeight;
+	 HashTable<unsigned long, ElementDesc, 0> m_elements;
+	 PStringBase_char m_strElementHeader;
+	 PStringBase_char m_strElementWHeader;
+	 PStringBase_char m_strStateHeader;
+	 PStringBase_char m_strStateWHeader;
+ };
+
+
+ //---
+
+
+ __declspec(align(8)) struct PhysicsScriptData
+ {
+	 long double start_time;
+	 CAnimHook* hook;
+ };
+
+ struct OldSmartArray_PhysicsScriptData
+ {
+	 PhysicsScriptData** data;
+	 int grow_size;
+	 int mem_size;
+	 int num_in_array;
+ };
+
+ const struct PhysicsScript
+ {
+	 SerializeUsingPackDBObj packobj;
+	 OldSmartArray_PhysicsScriptData script_data;
+	 long double length;
+ };
+
+
+ //---
+
+
+ __declspec(align(4)) struct RenderMesh
+ {
+	 DBObj dbobj;
+	 unsigned int m_InstanceFlags;
+	 unsigned int m_MeshAppearanceType;
+	 RenderMeshMaterialArray* m_pMaterialArray;
+	 RenderMeshVerticesArray* m_pVerticesArray;
+	 RenderMeshIndicesArray* m_pIndicesArray;
+	 SmartArray<RenderMeshFragment*> m_Fragments;
+	 SmartArray<unsigned long> m_RenderLODFragmentIndices;
+	 SmartArray<unsigned long> m_OccluderFragmentIndices;
+	 unsigned int m_ShadowLODFragmentIndex;
+	 bool m_CachedSupportsLighting;
+	 bool m_CachedSupportsMultiPassLighting;
+	 bool m_CachedSupportsCombinedAmbientPass;
+	 bool m_CachedIsGlowing;
+	 bool m_CachedNeedAlphaBlendPass;
+	 bool m_CachedHasSkeletalData;
+	 bool m_CachedAllSkeletalLODsWereBlended;
+	 unsigned int m_CachedSkeletalRenderLODIndex;
+	 unsigned int m_CachedSkeletalShadowVolumeLODIndex;
+	 BBox m_CachedRenderBoundingBox;
+	 BBox m_CachedSkinnedBoundingBox;
+	 bool m_IsSkinnedBoundingBoxValid;
+ };
+
+
+ //---
+
+
+ struct CLandBlockInfo
+ {
+	 SerializeUsingPackDBObj packobj;
+	 unsigned int num_objects;
+	 unsigned int* object_ids;  //DID
+	 Frame* object_frames;
+	 unsigned int num_buildings;
+	 BuildInfo** buildings;
+	 PackableHashTable<unsigned long, unsigned long>* restriction_table;
+	 PackableHashTable<unsigned long, PackableList<unsigned long> >* cell_ownership;
+	 unsigned int num_cells;
+	 unsigned int* cell_ids;
+	 CEnvCell** cells;
+ };
+
+
+
+ //---
+
+
+
+ struct CEnvCell
+ {
+	 CObjCell objcell;
+	 unsigned int num_surfaces;
+	 CSurface** surfaces;
+	 CCellStruct* structure;
+	 CEnvironment* env;
+	 unsigned int num_portals;
+	 CCellPortal* portals;
+	 unsigned int num_static_objects;
+	 unsigned int* static_object_ids; //DID
+	 Frame* static_object_frames;
+	 CPhysicsObj** static_objects;
+	 RGBColor* light_array;
+	 int incell_timestamp;
+	 MeshBuffer* constructed_mesh;
+	 int use_built_mesh;
+	 unsigned int m_current_render_frame_num;
+	 unsigned int num_view;
+	 DArray<portal_view_type*> portal_view;
+ };
+
+
+
+ //---
+
+
+
+ __declspec(align(8)) struct CAnimation
+ {
+	 SerializeUsingPackDBObj packobj;
+	 AFrame* pos_frames;
+	 AnimFrame* part_frames;
+	 int has_hooks;
+	 unsigned int num_parts;
+	 unsigned int num_frames;
+ };
+
+
+ //---
+
+
+
+ struct CCellStruct
+ {
+	 unsigned int cellstruct_id;
+	 CVertexArray vertex_array;
+	 unsigned int num_portals;
+	 CPolygon** portals;
+	 unsigned int num_surface_strips;
+	 CSurfaceTriStrips* surface_strips;
+	 unsigned int num_polygons;
+	 CPolygon* polygons;
+	 BSPTREE* drawing_bsp;
+	 unsigned int num_physics_polygons;
+	 CPolygon* physics_polygons;
+	 BSPTREE* physics_bsp;
+	 BSPTREE* cell_bsp;
+ };
+
+
+
+ struct CEnvironment
+ {
+	 SerializeUsingPackDBObj dbobj;
+	 unsigned int num_cells;
+	 CCellStruct* cells;
+ };
+
+
+ //---
+
+
+ //---
+
+
+
+
+ struct GfxObjInfo
+ {
+	 unsigned int gfxobj_id; //did
+	 int degrade_mode;
+	 float min_dist;
+	 float ideal_dist;
+	 float max_dist;
+ };
+
+
+ struct GfxObjDegradeInfo : SerializeUsingPackDBObj
+ {
+	 unsigned int num_degrades;
+	 GfxObjInfo* degrades;
+ };
+
+
+
+ struct DeviceKeyMapEntry
+ {
+	 DeviceType dt;
+	 Turbine_GUID guid;
+ };
+
+
+
+ struct ControlSpecification
+ {
+	 unsigned int m_dwKey; //See original h file for union type map
+ };
+
+ __declspec(align(8)) struct CMasterInputMap
+ {
+	 DBObj dbobj;
+	 PStringBase_char m_strName;
+	 Turbine_GUID m_guidMap;
+	 SmartArray<DeviceKeyMapEntry> m_rgDevices;
+	 HashList<ControlSpecification, unsigned long, 1> m_listMetaKeys;
+	 HashList<unsigned long, CInputMap*, 1> m_hashSections;
+	 unsigned int m_dwUsedMetaKeys;
+ };
+
 
 #endif

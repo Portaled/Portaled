@@ -6,17 +6,6 @@ struct HashList<unsigned long,CInputMap *,1>
 };
 
 
-struct __declspec(align(8)) CMasterInputMap : DBObj
-{
-  PStringBase<char> m_strName;
-  Turbine_GUID m_guidMap;
-  SmartArray<DeviceKeyMapEntry,1> m_rgDevices;
-  HashList<ControlSpecification,unsigned long,1> m_listMetaKeys;
-  HashList<unsigned long,CInputMap *,1> m_hashSections;
-  unsigned int m_dwUsedMetaKeys;
-};
-
-
 struct IntrusiveHashTable<QualifiedControl,HashList<QualifiedControl,unsigned long,1>_HashListData *,1>Vtbl
 {
   void *(__thiscall *__vecDelDtor)(IntrusiveHashTable<QualifiedControl,HashList<QualifiedControl,unsigned long,1>_HashListData *,1> *this, unsigned int);
@@ -744,18 +733,6 @@ struct IntrusiveHashTable<unsigned long,SoundTableData *,0>
 };
 
 
-struct SoundTableData : PackObj, IntrusiveHashData<unsigned long,SoundTableData *>
-{
-  IntrusiveHashTable<unsigned long,SoundTableData *,0> sound_hash_;
-  unsigned int num_stdatas_;
-  SoundData *data_;
-};
-
-
-const struct __declspec(align(8)) CSoundTable : SerializeUsingPackDBObj
-{
-  SoundTableData sound_data_;
-};
 
 
 struct ScriptManager
@@ -786,10 +763,6 @@ struct HashTable<unsigned long,PhysicsScriptTableData *,0>
 };
 
 
-const struct __declspec(align(8)) PhysicsScriptTable : SerializeUsingPackDBObj
-{
-  HashTable<unsigned long,PhysicsScriptTableData *,0> script_table;
-};
 
 
 struct __declspec(align(4)) SArray<CPhysicsObj *>
@@ -1591,14 +1564,6 @@ struct LongHash<LocationType> : HashBase<unsigned long>
 };
 
 
-struct GfxObjDegradeInfo : SerializeUsingPackDBObj
-{
-  unsigned int num_degrades;
-  GfxObjInfo *degrades;
-};
-
-
-
 
 struct _D3DCOLORVALUE
 {
@@ -1658,20 +1623,6 @@ struct CSurface : DBObj, GraphicsResource
 };
 
 
-struct OldSmartArray<PhysicsScriptData *>
-{
-  PhysicsScriptData **data;
-  int grow_size;
-  int mem_size;
-  int num_in_array;
-};
-
-
-const struct PhysicsScript : SerializeUsingPackDBObj
-{
-  OldSmartArray<PhysicsScriptData *> script_data;
-  long double length;
-};
 
 
 struct AC1Legacy_SmartArray<ScriptAndModData>
@@ -1759,20 +1710,6 @@ struct CLandCell : CSortCell
 };
 
 
-struct CLandBlockInfo : SerializeUsingPackDBObj
-{
-  unsigned int num_objects;
-  IDClass<_tagDataID,32,0> *object_ids;
-  Frame *object_frames;
-  unsigned int num_buildings;
-  BuildInfo **buildings;
-  PackableHashTable<unsigned long,unsigned long> *restriction_table;
-  PackableHashTable<unsigned long,PackableList<unsigned long> > *cell_ownership;
-  unsigned int num_cells;
-  unsigned int *cell_ids;
-  CEnvCell **cells;
-};
-
 
 struct __declspec(align(8)) CBuildingObj : CPhysicsObj
 {
@@ -1797,15 +1734,6 @@ struct CELLINFO
   CObjCell *cell;
 };
 
-
-struct GfxObjInfo
-{
-  IDClass<_tagDataID,32,0> gfxobj_id;
-  int degrade_mode;
-  float min_dist;
-  float ideal_dist;
-  float max_dist;
-};
 
 
 struct CVec2Duv
@@ -1856,13 +1784,6 @@ struct __declspec(align(4)) ImgTex : DBObj, GraphicsResource
   RenderTexture *m_pRenderTexture;
   RenderTexture *m_pSystemMemTexture;
   bool m_IsLocked;
-};
-
-
-struct __declspec(align(8)) PhysicsScriptData
-{
-  long double start_time;
-  CAnimHook *hook;
 };
 
 
@@ -1938,27 +1859,6 @@ struct DArray<portal_view_type *>
   unsigned int sizeOf;
 };
 
-
-struct CEnvCell : CObjCell
-{
-  unsigned int num_surfaces;
-  CSurface **surfaces;
-  CCellStruct *structure;
-  CEnvironment *env;
-  unsigned int num_portals;
-  CCellPortal *portals;
-  unsigned int num_static_objects;
-  IDClass<_tagDataID,32,0> *static_object_ids;
-  Frame *static_object_frames;
-  CPhysicsObj **static_objects;
-  RGBColor *light_array;
-  int incell_timestamp;
-  MeshBuffer *constructed_mesh;
-  int use_built_mesh;
-  unsigned int m_current_render_frame_num;
-  unsigned int num_view;
-  DArray<portal_view_type *> portal_view;
-};
 
 
 struct CBldPortal
@@ -2135,24 +2035,6 @@ struct PackableHashData<unsigned long,PackableList<unsigned long> >
   PackableList<unsigned long> _data;
   PackableHashData<unsigned long,PackableList<unsigned long> > *_next;
   int _hashVal;
-};
-
-
-struct CCellStruct
-{
-  unsigned int cellstruct_id;
-  CVertexArray vertex_array;
-  unsigned int num_portals;
-  CPolygon **portals;
-  unsigned int num_surface_strips;
-  CSurfaceTriStrips *surface_strips;
-  unsigned int num_polygons;
-  CPolygon *polygons;
-  BSPTREE *drawing_bsp;
-  unsigned int num_physics_polygons;
-  CPolygon *physics_polygons;
-  BSPTREE *physics_bsp;
-  BSPTREE *cell_bsp;
 };
 
 
@@ -3443,22 +3325,6 @@ struct SmartArray<MediaDesc *,1>
 };
 
 
-struct StateDesc
-{
-  StateDescVtbl *vfptr;
-  unsigned int m_uiIncorporationFlags;
-  unsigned int m_stateID;
-  bool m_bIsCode;
-  bool m_bPassToChildren;
-  int m_x;
-  int m_y;
-  int m_width;
-  int m_height;
-  int m_zLevel;
-  PropertyCollection m_properties;
-  SmartArray<MediaDesc *,1> m_media;
-};
-
 
 struct IntrusiveHashTable<unsigned long,HashTableData<unsigned long,StateDesc> *,0>
 {
@@ -3495,25 +3361,6 @@ struct HashTable<unsigned long,ElementDesc,0>
   IntrusiveHashTable<unsigned long,HashTableData<unsigned long,ElementDesc> *,0> m_intrusiveTable;
 };
 
-
-struct __unaligned __declspec(align(4)) ElementDesc : StateDesc
-{
-  unsigned int m_elementID;
-  unsigned int m_type;
-  unsigned int m_engineType;
-  unsigned int m_baseElement;
-  IDClass<_tagDataID,32,0> m_baseLayout;
-  unsigned int m_defaultState;
-  unsigned int m_leftEdge;
-  unsigned int m_topEdge;
-  unsigned int m_rightEdge;
-  unsigned int m_bottomEdge;
-  HashTable<unsigned long,StateDesc,0> m_states;
-  HashTable<unsigned long,ElementDesc,0> m_children;
-  unsigned int m_uiReadOrder;
-  PStringBase<char> m_strComments;
-  PStringBase<char> m_strName;
-};
 
 
 struct $B3063E6E2789ED8335ADD9A2B80B8500
@@ -3681,18 +3528,6 @@ struct MediaMachine : UIListener
   UIElement *m_owner;
   SmartArray<MediaDesc *,1> m_array;
   unsigned int m_curIndex;
-};
-
-
-const struct __declspec(align(8)) LayoutDesc : DBObj
-{
-  unsigned int m_displayWidth;
-  unsigned int m_displayHeight;
-  HashTable<unsigned long,ElementDesc,0> m_elements;
-  PStringBase<char> m_strElementHeader;
-  PStringBase<char> m_strElementWHeader;
-  PStringBase<char> m_strStateHeader;
-  PStringBase<char> m_strStateWHeader;
 };
 
 

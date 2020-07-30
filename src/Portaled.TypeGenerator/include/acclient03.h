@@ -3328,25 +3328,6 @@ union $3A12A35673ABAF6F36D474785B94EEE7
 };
 
 
-struct $9C6DAF44A9AEA890BFBAC1C5D0FBFA65
-{
-  unsigned __int32 m_idxDevice : 8;
-  unsigned __int32 m_eSubControl : 8;
-  unsigned __int32 m_ofsKey : 16;
-};
-
-
-union $5A7CC7A4FC74C6002EF56E9E9F5A9BC1
-{
-  unsigned int m_dwKey;
-  $9C6DAF44A9AEA890BFBAC1C5D0FBFA65 __s1;
-};
-
-
-struct ControlSpecification
-{
-  $5A7CC7A4FC74C6002EF56E9E9F5A9BC1 ___u0;
-};
 
 
 union $6C55AAF44FF814F2A14F72D46C5F36D9
@@ -5561,13 +5542,6 @@ struct IntrusiveHashIterator<PStringBase<char>,HashTableData<PStringBase<char>,u
 struct HashIterator<PStringBase<char>,unsigned long,0>
 {
   IntrusiveHashIterator<PStringBase<char>,HashTableData<PStringBase<char>,unsigned long> *,0> m_iter;
-};
-
-
-struct DeviceKeyMapEntry
-{
-  DeviceType dt;
-  Turbine_GUID guid;
 };
 
 

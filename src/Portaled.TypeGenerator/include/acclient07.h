@@ -1261,11 +1261,6 @@ struct SmartArray<Font *,1>
 };
 
 
-struct FontLocal : Font
-{
-};
-
-
 struct TextureBasedFontVertexType
 {
   Vector3 Origin;
@@ -1442,42 +1437,6 @@ struct SetPositionStruct
   float xrad;
   float yrad;
   unsigned int num_tries;
-};
-
-
-struct ParticleEmitterInfo : SerializeUsingPackDBObj
-{
-  int emitter_type;
-  int particle_type;
-  int is_parent_local;
-  IDClass<_tagDataID,32,0> gfxobj_id;
-  IDClass<_tagDataID,32,0> hw_gfxobj_id;
-  long double birthrate;
-  int max_particles;
-  int initial_particles;
-  int total_particles;
-  long double total_seconds;
-  long double lifespan_rand;
-  long double lifespan;
-  CSphere sorting_sphere;
-  AC1Legacy_Vector3 offset_dir;
-  float min_offset;
-  float max_offset;
-  AC1Legacy_Vector3 a;
-  AC1Legacy_Vector3 b;
-  AC1Legacy_Vector3 c;
-  float min_a;
-  float max_a;
-  float min_b;
-  float max_b;
-  float min_c;
-  float max_c;
-  float scale_rand;
-  float start_scale;
-  float final_scale;
-  float trans_rand;
-  float start_trans;
-  float final_trans;
 };
 
 
@@ -1882,12 +1841,6 @@ struct ConstantSound : AmbientSound
 };
 
 
-struct PalShiftSubPal
-{
-  unsigned int sub_pal_index;
-  unsigned int sub_pal_length;
-};
-
 
 struct AC1Legacy_SmartArray<PalShiftSubPal *>
 {
@@ -1897,11 +1850,6 @@ struct AC1Legacy_SmartArray<PalShiftSubPal *>
 };
 
 
-struct PalShiftRoadCode
-{
-  unsigned int road_code;
-  LandDefs_PalType *sub_pal_type;
-};
 
 
 struct AC1Legacy_SmartArray<PalShiftRoadCode *>
@@ -1911,12 +1859,6 @@ struct AC1Legacy_SmartArray<PalShiftRoadCode *>
   unsigned int m_num;
 };
 
-
-struct PalShiftTerrainPal
-{
-  LandDefs_TerrainType terrain_index;
-  IDClass<_tagDataID,32,0> pal_id;
-};
 
 
 struct AC1Legacy_SmartArray<PalShiftTerrainPal *>
@@ -2053,17 +1995,6 @@ struct AC1Legacy_SmartArray<AmbientSTBDesc *>
 
 
 
-
-
-struct RegionMisc
-{
-  unsigned int version;
-  IDClass<_tagDataID,32,0> game_map;
-  IDClass<_tagDataID,32,0> autotest_map;
-  unsigned int autotest_map_size;
-  IDClass<_tagDataID,32,0> clear_cell;
-  IDClass<_tagDataID,32,0> clear_monster;
-};
 
 
 
@@ -6001,9 +5932,7 @@ struct PackableHashTable<IDClass<_tagDataID,32,0>,int> : PackObj
 };
 
 
-struct __declspec(align(8)) String : DBObj, PStringBase<char>
-{
-};
+
 
 
 struct IntrusiveHashIterator<unsigned long,HashTableData<unsigned long,PhysicsScriptTableData *> *,0>
