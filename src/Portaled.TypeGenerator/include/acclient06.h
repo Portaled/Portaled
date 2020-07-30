@@ -984,11 +984,6 @@ struct HashTableData<unsigned long,BasePropertyDesc *> : IntrusiveHashData<unsig
 };
 
 
-const struct __declspec(align(8)) MasterProperty : DBObj
-{
-  EnumMapper m_emapper;
-  HashTable<unsigned long,BasePropertyDesc *,0> m_properties;
-};
 
 
 struct DBObjGrabber<MasterProperty>
@@ -1429,49 +1424,6 @@ struct TurnToEventPack : PackObj
 };
 
 
-struct CLanguageInfo : DBObj
-{
-  int version;
-  unsigned __int16 base;
-  unsigned __int16 numDecimalDigits;
-  bool leadingZero;
-  unsigned __int16 groupingSize;
-  PStringBase<unsigned short> numerals;
-  PStringBase<unsigned short> decimalSeperator;
-  PStringBase<unsigned short> groupingSeperator;
-  PStringBase<unsigned short> negativeNumberFormat;
-  bool isZeroSingular;
-  bool isOneSingular;
-  bool isNegativeOneSingular;
-  bool isTwoOrMoreSingular;
-  bool isNegativeTwoOrLessSingular;
-  PStringBase<unsigned short> treasurePrefixLetters;
-  PStringBase<unsigned short> treasureMiddleLetters;
-  PStringBase<unsigned short> treasureSuffixLetters;
-  PStringBase<unsigned short> malePlayerLetters;
-  PStringBase<unsigned short> femalePlayerLetters;
-  unsigned int m_ImeEnabledSetting;
-  unsigned int m_symbolColor;
-  unsigned int m_symbolColorText;
-  unsigned int m_symbolHeight;
-  unsigned int m_symbolTranslucence;
-  unsigned int m_symbolPlacement;
-  unsigned int m_candColorBase;
-  unsigned int m_candColorBorder;
-  unsigned int m_candColorText;
-  unsigned int m_compColorInput;
-  unsigned int m_compColorTargetConv;
-  unsigned int m_compColorConverted;
-  unsigned int m_compColorTargetNotConv;
-  unsigned int m_compColorInputErr;
-  unsigned int m_compTranslucence;
-  unsigned int m_compColorText;
-  unsigned int m_otherIME;
-  int m_wordWrapOnSpace;
-  PStringBase<unsigned short> m_additionalSettings;
-  unsigned int m_additionalFlags;
-};
-
 
 struct CLanguageInfoInterface
 {
@@ -1756,17 +1708,6 @@ struct __declspec(align(8)) RenderIndexStreamD3D : GraphicsResource
 };
 
 
-struct TFileEntry : ReferenceCountTemplate<1048576,1>
-{
-  PStringBase<char> m_pPath;
-  PStringBase<char> m_pFileName;
-  IDClass<_tagDataID,32,0> m_did;
-  unsigned int m_dbtype;
-  FileEntryType m_EntryType;
-  bool m_bAuthoritative;
-  int m_tFileWriteTime;
-};
-
 
 struct IntrusiveHashTable<CaseInsensitiveStringBase<PStringBase<char> >,HashTableData<CaseInsensitiveStringBase<PStringBase<char> >,TFileEntry *> *,1>
 {
@@ -1864,18 +1805,6 @@ struct AutoGrowHashTable<IDClass<_tagDataID,32,0>,TFileEntry *> : HashTable<IDCl
 };
 
 
-struct TDBTypeEntry
-{
-  bool bRecursed;
-  bool bRegistered;
-  PStringBase<char> pRootGamePath;
-  PStringBase<char> pRootEngPath;
-  PStringBase<char> TypeName;
-  IDClass<_tagDataID,32,0> HighestDIDAssigned;
-  AutoGrowHashTable<IDClass<_tagDataID,32,0>,TFileEntry *> DIDs;
-};
-
-
 struct IntrusiveHashIterator<IDClass<_tagDataID,32,0>,HashTableData<IDClass<_tagDataID,32,0>,TFileEntry *> *,1>
 {
   IntrusiveHashTable<IDClass<_tagDataID,32,0>,HashTableData<IDClass<_tagDataID,32,0>,TFileEntry *> *,1> *m_currHashTable;
@@ -1938,11 +1867,6 @@ struct AutoGrowHashTable<unsigned long,TDBTypeEntry *> : HashTable<unsigned long
 };
 
 
-struct TReadOnlyFile2IDTable
-{
-  TReadOnlyFile2IDTableVtbl *vfptr;
-};
-
 
 struct TReadOnlyFile2IDTableVtbl
 {
@@ -1958,11 +1882,6 @@ struct TReadOnlyFile2IDTableVtbl
 };
 
 
-struct TFile2IDTable : TReadOnlyFile2IDTable
-{
-  AutoGrowHashTable<CaseInsensitiveStringBase<PStringBase<char> >,TFileEntry *> m_CacheByFileName;
-  AutoGrowHashTable<unsigned long,TDBTypeEntry *> m_CacheByDID;
-};
 
 
 struct OutputStream
@@ -2064,25 +1983,6 @@ struct HashIterator<unsigned long,BasePropertyDesc *,0>
 
 struct MasterPropertyGrabber : DBObjGrabber<MasterProperty>
 {
-};
-
-
-struct WaveFile
-{
-  WaveFileVtbl *vfptr;
-  tWAVEFORMATEX *m_pwfmt;
-  char *m_pData;
-  HMMIO__ *m_hmmio;
-  unsigned int m_mmr;
-  _MMCKINFO m_mmckiRiff;
-  _MMCKINFO m_mmckiFmt;
-  _MMCKINFO m_mmckiData;
-  unsigned int m_nDuration;
-  unsigned int m_nBlockAlign;
-  unsigned int m_nAvgDataRate;
-  unsigned int m_nDataSize;
-  unsigned int m_nFormatSize;
-  unsigned int m_nBytesPlayed;
 };
 
 
@@ -3124,14 +3024,6 @@ struct HashTableData<unsigned long,PStringBase<char> > : IntrusiveHashData<unsig
 };
 
 
-struct EnumIDMap : DBObj
-{
-  HashTable<unsigned long,IDClass<_tagDataID,32,0>,0> m_EnumToID;
-  HashTable<unsigned long,IDClass<_tagDataID,32,0>,0> m_EnumToIDInternal;
-  HashTable<unsigned long,PStringBase<char>,0> m_EnumToName;
-  HashTable<unsigned long,PStringBase<char>,0> m_EnumToNameInternal;
-};
-
 
 struct IntrusiveHashIterator<unsigned long,HashTableData<unsigned long,PStringBase<char> > *,0>
 {
@@ -3197,10 +3089,6 @@ struct HashTableData<IDClass<_tagDataID,32,0>,unsigned long> : IntrusiveHashData
 };
 
 
-struct __declspec(align(8)) DualEnumIDMap : EnumIDMap
-{
-  HashTable<IDClass<_tagDataID,32,0>,unsigned long,0> m_IDToEnum;
-};
 
 
 struct IntrusiveHashIterator<IDClass<_tagDataID,32,0>,HashTableData<IDClass<_tagDataID,32,0>,unsigned long> *,0>
@@ -3824,16 +3712,6 @@ struct StringTableMetaLanguage_RenderErr
 };
 
 
-struct NameFilterLanguageData
-{
-  unsigned int m_MaximumSameCharactersInARow;
-  unsigned int m_MaximumVowelsInARow;
-  unsigned int m_FirstNCharactersMustHaveAVowel;
-  unsigned int m_VowelContainingSubstringLength;
-  PStringBase<unsigned short> m_ExtraAllowedCharacters;
-  SmartArray<PStringBase<unsigned short>,1> m_CompoundLetterGroups;
-};
-
 
 struct IntrusiveHashTable<unsigned long,HashTableData<unsigned long,NameFilterLanguageData> *,0>
 {
@@ -3891,11 +3769,6 @@ struct HashTable<unsigned long,NameFilterLanguageData,0>Vtbl
   void *(__thiscall *__vecDelDtor)(HashTable<unsigned long,NameFilterLanguageData,0> *this, unsigned int);
 };
 
-
-struct __declspec(align(8)) NameFilterTable : DBObj
-{
-  HashTable<unsigned long,NameFilterLanguageData,0> m_LanguageData;
-};
 
 
 struct List<PFileNode *>
@@ -4024,9 +3897,6 @@ struct TriStatePropertyValue : BasePropertyValue
 };
 
 
-struct DBPropertyCollection : PropertyCollection, DBObj
-{
-};
 
 
 struct ArrayPropertyValue : BasePropertyValue
@@ -4410,15 +4280,6 @@ struct HashSorter<unsigned long,StringTableString *>_DescendingByData
 
 struct StringTableStringTableAscending
 {
-};
-
-
-struct StringTable : DBObj
-{
-  unsigned int m_version;
-  PStringBase<unsigned short> m_description;
-  unsigned int m_language;
-  HashTable<unsigned long,StringTableString *,0> m_strings;
 };
 
 

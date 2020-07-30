@@ -135,10 +135,28 @@ struct LongHashData : HashBaseData<unsigned long>
 {
 };
 
-
 template <typename K, typename V>
 struct AutoGrowHashTable : HashTable<K, V, 1>
 {
+};
+
+template <typename K, typename V>
+struct PackableHashData
+{
+	K _key;
+	V _data;
+	PackableHashData<K, V>* _next;
+	int _hashVal;
+};
+
+template <typename K, typename V>
+struct PackableHashTable
+{
+	PackObj packobj;
+	int m_fThrowawayDuplicateKeysOnUnPack;
+	PackableHashData<K, V>** _buckets;
+	unsigned int _table_size;
+	unsigned int _currNum;
 };
 
 #endif

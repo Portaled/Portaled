@@ -965,10 +965,6 @@ struct _FORM_INFO_1A
 };
 
 
-struct CaseInsensitiveStringBase<PStringBase<char> > : PStringBase<char>
-{
-};
-
 
 
 

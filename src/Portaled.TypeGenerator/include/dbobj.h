@@ -8,6 +8,7 @@
 #include "hash.h"
 #include "list.h"
 #include "dbocache.h"
+#include "string.h"
 
 
 
@@ -1067,5 +1068,706 @@ struct DBCache
 	bool m_bIsServer;
 	IDataGraph* m_pDataGraph;
 };
+
+struct WaveFile
+{
+	void* vfptr;
+	tWAVEFORMATEX* m_pwfmt;
+	char* m_pData;
+	HMMIO__* m_hmmio;
+	unsigned int m_mmr;
+	_MMCKINFO m_mmckiRiff;
+	_MMCKINFO m_mmckiFmt;
+	_MMCKINFO m_mmckiData;
+	unsigned int m_nDuration;
+	unsigned int m_nBlockAlign;
+	unsigned int m_nAvgDataRate;
+	unsigned int m_nDataSize;
+	unsigned int m_nFormatSize;
+	unsigned int m_nBytesPlayed;
+};
+
+struct DBWave
+{
+	SerializeUsingPackDBObj packobj;
+	WaveFile wave;
+};
+
+
+struct ChatPoseTable
+{
+	SerializeUsingPackDBObj packobj;
+	void* _chatPostHash; //PackableHashTable<AC1Legacy_CaseInsensitiveStringBase<AC1Legacy_PStringBase<char> >, AC1Legacy_PStringBase<char> > _chatPoseHash;
+	void* _chatEmoteHash; // PackableHashTable<AC1Legacy_PStringBase<char>, ChatEmoteData> _chatEmoteHash;
+};
+
+struct ReferenceCountTemplate_268435456_0
+{
+	void* vfptr;
+	unsigned int m_cRef;
+};
+
+struct __declspec(align(4)) AC1Legacy_PSRefBuffer_char
+{
+	ReferenceCountTemplate_268435456_0 reftemplate;
+	unsigned int m_len;
+	unsigned int m_size;
+	unsigned int m_hash;
+	char m_data[1];
+};
+
+
+struct AC1Legacy_PStringBase_char
+{
+	AC1Legacy_PSRefBuffer_char* m_buffer;
+};
+
+
+ __unaligned __declspec(align(4)) struct cWObjHierNode
+{
+	AC1Legacy_SmartArray<cWObjHierNode*> smartarray;
+	AC1Legacy_PStringBase_char _menu_name;
+	unsigned int _wcid;
+};
+
+
+struct __declspec(align(8)) cWObjHierRootNode
+{
+	SerializeUsingPackDBObj packobj;
+	cWObjHierNode node;
+};
+
+struct __declspec(align(8)) BadData
+{
+	SerializeUsingPackDBObj packobj;
+	PackableHashTable<unsigned int, int> _bad;
+};
+
+
+ __declspec(align(8)) struct TabooTable
+{
+	DBObj dbobj;
+	HashTable<unsigned long, HashTable<unsigned long, List<PStringBase_char>, 0>, 0> m_audienceToBannedPatterns;
+};
+
+struct TReadOnlyFile2IDTable
+{
+	void* vfptr;
+};
+
+
+
+struct TFileEntry
+{
+	ReferenceCountTemplate referencetemplate;
+	PStringBase_char m_pPath;
+	PStringBase_char m_pFileName;
+	unsigned int m_did;
+	unsigned int m_dbtype;
+	FileEntryType m_EntryType;
+	bool m_bAuthoritative;
+	int m_tFileWriteTime;
+};
+
+
+struct TDBTypeEntry
+{
+	bool bRecursed;
+	bool bRegistered;
+	PStringBase_char pRootGamePath;
+	PStringBase_char pRootEngPath;
+	PStringBase_char TypeName;
+	unsigned int  HighestDIDAssigned;
+	AutoGrowHashTable<unsigned int, TFileEntry*> DIDs;
+};
+
+struct TFile2IDTable
+{
+	TReadOnlyFile2IDTable readonlyfile2idtable;
+	AutoGrowHashTable<PStringBase_char, TFileEntry*> m_CacheByFileName;
+	AutoGrowHashTable<unsigned long, TDBTypeEntry*> m_CacheByDID;
+};
+
+struct __declspec(align(8)) DBFile2IDTable
+{
+	DBObj dbobj;
+	TFile2IDTable file2idtable;
+};
+
+
+//---
+
+
+
+struct NameFilterLanguageData
+{
+	unsigned int m_MaximumSameCharactersInARow;
+	unsigned int m_MaximumVowelsInARow;
+	unsigned int m_FirstNCharactersMustHaveAVowel;
+	unsigned int m_VowelContainingSubstringLength;
+	PStringBase_ushort m_ExtraAllowedCharacters;
+	SmartArray<PStringBase_ushort> m_CompoundLetterGroups;
+};
+
+
+struct __declspec(align(8)) NameFilterTable
+{
+	DBObj dbobj;
+	HashTable<unsigned long, NameFilterLanguageData, 0> m_LanguageData;
+};
+
+
+//---
+
+struct PalSet
+{
+	SerializeUsingPackDBObj dbobj;
+	unsigned int num_pals;
+	unsigned int* palette_IDs; //TODO: Marshal as array,  DID
+};
+
+//---
+
+
+struct CloSubpalEffect : PackObj
+{
+	unsigned int numRanges;
+	unsigned int* rangeStart;
+	unsigned int* rangeLength;
+	unsigned int palSet; //DID
+};
+
+struct CloPaletteTemplate : PackObj
+{
+	unsigned int iconID;  //DID
+	unsigned int numSubpalEffects;
+	CloSubpalEffect* subpalEffects;
+};
+
+struct ClothingBase
+{
+	PackObj packobj;
+	unsigned int numObjectEffects;
+	CloObjectEffect* objectEffects; //TODO: Marshal as array
+};
+
+struct ClothingTable
+{
+	SerializeUsingPackDBObj packobj;
+	PackableHashTable<unsigned int, ClothingBase> _cloBaseHash;
+	PackableHashTable<unsigned long, CloPaletteTemplate> _paletteTemplatesHash;
+};
+
+
+//---
+
+
+struct ObjectDesc
+{
+	unsigned int obj_id; //DID
+	Frame base_loc;
+	float freq;
+	float displace_x;
+	float displace_y;
+	float min_scale;
+	float max_scale;
+	float max_rot;
+	float min_slope;
+	float max_slope;
+	int align;
+	int orient;
+	int weenie_obj;
+};
+
+__declspec(align(8)) struct Scene
+{
+	SerializeUsingPackDBObj packobj;
+	unsigned int version;
+	unsigned int num_objects;
+	ObjectDesc* objects;
+};
+
+
+//---
+
+
+struct FileNameDesc
+{
+	AC1Legacy_PStringBase_char height_map;
+	AC1Legacy_PStringBase_char terrain_map;
+	AC1Legacy_PStringBase_char scene_map;
+	AC1Legacy_PStringBase_char encounter_type_map;
+};
+
+struct SkyObject
+{
+	char* object_name;
+	float begin_time;
+	float end_time;
+	float begin_angle;
+	float end_angle;
+	AC1Legacy_Vector3 tex_velocity;
+	unsigned int properties;
+	unsigned int default_gfx_object;  //DID
+	unsigned int default_pes_object; //DID
+};
+
+struct SkyObjectReplace
+{
+	unsigned int object_index;
+	SkyObject* object;
+	unsigned int gfx_obj_id; //DID
+	float rotate;
+	float transparent;
+	float luminosity;
+	float max_bright;
+};
+
+struct SkyTimeOfDay
+{
+	float begin;
+	float dir_bright;
+	float dir_heading;
+	float dir_pitch;
+	unsigned int dir_color; //RGBAUnion
+	float amb_bright;
+	unsigned int amb_color; //RGBAUnion
+	int world_fog;
+	float min_world_fog;
+	float max_world_fog;
+	unsigned int world_fog_color; //RGBAUnion
+	AC1Legacy_SmartArray<SkyObjectReplace*> sky_obj_replace;
+};
+
+struct DayGroup
+{
+	AC1Legacy_PStringBase_char day_name;
+	float chance_of_occur;
+	AC1Legacy_SmartArray<SkyTimeOfDay*> sky_time;
+	AC1Legacy_SmartArray<SkyObject*> sky_objects;
+};
+
+struct __declspec(align(8)) SkyDesc
+{
+	unsigned int present_day_group;
+	long double tick_size;
+	long double light_tick_size;
+	AC1Legacy_SmartArray<DayGroup*> day_groups;
+};
+
+struct CSoundDesc
+{
+	AC1Legacy_SmartArray<AmbientSTBDesc*> stb_desc;
+};
+
+struct CSceneType
+{
+	PStringBase_char scene_name;
+	SmartArray<unsigned int> scenes;
+	AmbientSTBDesc* sound_table_desc;
+};
+
+
+struct CSceneDesc
+{
+	AC1Legacy_SmartArray<CSceneType*> scene_types;
+};
+
+
+
+struct PalShiftSubPal
+{
+	unsigned int sub_pal_index;
+	unsigned int sub_pal_length;
+};
+
+struct PalShiftTerrainPal
+{
+	LandDefs_TerrainType terrain_index;
+	unsigned int pal_id; //DID
+};
+
+struct PalShiftRoadCode
+{
+	unsigned int road_code;
+	LandDefs_PalType* sub_pal_type;
+};
+
+struct PalShiftTex
+{
+	unsigned int tex_gid; //DID
+	AC1Legacy_SmartArray<PalShiftSubPal*> sub_pal;
+	AC1Legacy_SmartArray<PalShiftRoadCode*> road_code;
+	AC1Legacy_SmartArray<PalShiftTerrainPal*> terrain_pal;
+};
+
+
+struct Subpalette
+{
+	PackObj packobj;
+	unsigned int subID; //DID
+	unsigned int offset;
+	unsigned int numcolors;
+	Subpalette* prev;
+	Subpalette* next;
+};
+
+struct PalShift
+{
+	unsigned int cur_tex;
+	AC1Legacy_SmartArray<PalShiftTex*> land_tex;
+	Subpalette* sub_pals;
+	unsigned int maxsubs;
+};
+
+struct RoadAlphaMap
+{
+	unsigned int rcode;
+	unsigned int road_tex_gid; //DID
+	ImgTex* texture;
+};
+
+struct TerrainAlphaMap
+{
+	unsigned int tcode;
+	unsigned int tex_gid; //DID
+	ImgTex* texture;
+};
+
+
+struct TerrainTex
+{
+	unsigned int tex_gid;  //DID
+	ImgTex* base_texture;
+	float min_slope;
+	unsigned int tex_tiling;
+	unsigned int max_vert_bright;
+	unsigned int min_vert_bright;
+	unsigned int max_vert_saturate;
+	unsigned int min_vert_saturate;
+	unsigned int max_vert_hue;
+	unsigned int min_vert_hue;
+	unsigned int detail_tex_tiling;
+	unsigned int detail_tex_gid; //DID
+};
+
+struct TMTerrainDesc
+{
+	LandDefs_TerrainType terrain_type;
+	AC1Legacy_SmartArray<TerrainTex*> terrain_tex;
+};
+
+
+struct TexMerge
+{
+	unsigned int base_tex_size;
+	AC1Legacy_SmartArray<TerrainAlphaMap*> corner_terrain_maps;
+	AC1Legacy_SmartArray<TerrainAlphaMap*> side_terrain_maps;
+	AC1Legacy_SmartArray<RoadAlphaMap*> road_maps;
+	AC1Legacy_SmartArray<TMTerrainDesc*> terrain_desc;
+};
+
+struct SurfInfo
+{
+	unsigned int palcode;
+	unsigned int lcell_count;
+	CSurface* surface;
+	unsigned int surf_num;
+};
+
+struct CTerrainType
+{
+	AC1Legacy_PStringBase_char terrain_name;
+	unsigned int terrain_color; //RGBAUnion
+	AC1Legacy_SmartArray<CSceneType*> scene_types;
+};
+
+
+struct LandSurf
+{
+	PalShift* pal_shift;
+	TexMerge* tex_merge;
+	LongNIValHash<SurfInfo*>* surf_info;
+	unsigned int num_lsurf;
+	CSurface** lsurf;
+	unsigned int num_unique_surfaces;
+	unsigned int num_block_surfs;
+	AC1Legacy_SmartArray<CSurface*> block_surf_array;
+	char* curr_tex;
+};
+
+struct CTerrainDesc
+{
+	LandSurf* land_surfaces;
+	AC1Legacy_SmartArray<CTerrainType*> terrain_types;
+};
+
+
+struct EncounterType
+{
+	unsigned int* encounter; //DID
+};
+
+struct CEncounterDesc
+{
+	unsigned int num_encounter_type;
+	EncounterType** encounter_table;
+	char* encounter_map;
+};
+
+
+
+struct RegionMisc
+{
+	unsigned int version;
+	unsigned int game_map; //DID
+	unsigned int autotest_map; //DID
+	unsigned int autotest_map_size;
+	unsigned int clear_cell;  //DID
+	unsigned int clear_monster;  //DID
+};
+
+
+
+
+struct CRegionDesc 
+{
+	SerializeUsingPackDBObj packobj;
+	unsigned int region_number;
+	AC1Legacy_PStringBase_char region_name;
+	unsigned int version;
+	int minimize_pal;
+	unsigned int parts_mask;
+	FileNameDesc* file_info;
+	SkyDesc* sky_info;
+	CSoundDesc* sound_info;
+	CSceneDesc* scene_info;
+	CTerrainDesc* terrain_info;
+	CEncounterDesc* encounter_info;
+	void* water_info; //WaterDesc type, shows as blank in header files
+	void* fog_info; //FogDesc type, shows as blank in header files
+	void* dist_fog_info; //DistanceFogDesc type, shows as blank in header files
+	void* region_map_info; //RegionMapDesc type, shows as blank in header files
+	RegionMisc* region_misc;
+};
+
+//---
+
+struct EnumMapper
+{
+	DBObj dbobj;
+	unsigned int m_base_emp_did; //did
+	EnumMapper* m_base_emp;
+	AutoGrowHashTable<unsigned long, PStringBase_char> m_id_to_string_map; //AutoGrowHashTable<unsigned long, CaseInsensitiveStringBase<PStringBase_char > > m_id_to_string_map;
+	AutoGrowHashTable<PStringBase_char, unsigned long> m_string_to_id_map; //AutoGrowHashTable<CaseInsensitiveStringBase<PStringBase_char>, unsigned long> m_string_to_id_map;
+};
+
+//---
+
+struct StringTable
+{
+	DBObj dbobj;
+	unsigned int m_version;
+	PStringBase_ushort m_description;
+	unsigned int m_language;
+	HashTable<unsigned long, StringTableString*, 0> m_strings;
+};
+
+//---
+
+
+struct EnumIDMap
+{
+	DBObj dbobj;
+	/*HashTable<unsigned long, IDClass<_tagDataID, 32, 0>, 0> m_EnumToID;
+	HashTable<unsigned long, IDClass<_tagDataID, 32, 0>, 0> m_EnumToIDInternal;
+	HashTable<unsigned long, PStringBase<char>, 0> m_EnumToName;
+	HashTable<unsigned long, PStringBase<char>, 0> m_EnumToNameInternal;*/
+	HashTable<unsigned long, unsigned int, 0> m_EnumToID;
+	HashTable<unsigned long, unsigned int, 0> m_EnumToIDInternal;
+	HashTable<unsigned long, PStringBase_char, 0> m_EnumToName;
+	HashTable<unsigned long, PStringBase_char, 0> m_EnumToNameInternal;
+};
+
+//---
+
+ __declspec(align(8)) struct DualEnumIDMap
+{
+	EnumIDMap enumidmap;
+	HashTable<unsigned int, unsigned long, 0> m_IDToEnum;
+};
+
+//---
+
+
+ __declspec(align(8)) struct ACString
+{
+	DBObj dbobj;
+	PStringBase_char str;
+};
+
+
+ //---
+
+ struct ParticleEmitterInfo
+ {
+	 SerializeUsingPackDBObj packobj;
+	 int emitter_type;
+	 int particle_type;
+	 int is_parent_local;
+	 unsigned int gfxobj_id; //DID
+	 unsigned int hw_gfxobj_id; //DID
+	 long double birthrate;
+	 int max_particles;
+	 int initial_particles;
+	 int total_particles;
+	 long double total_seconds;
+	 long double lifespan_rand;
+	 long double lifespan;
+	 CSphere sorting_sphere;
+	 AC1Legacy_Vector3 offset_dir;
+	 float min_offset;
+	 float max_offset;
+	 AC1Legacy_Vector3 a;
+	 AC1Legacy_Vector3 b;
+	 AC1Legacy_Vector3 c;
+	 float min_a;
+	 float max_a;
+	 float min_b;
+	 float max_b;
+	 float min_c;
+	 float max_c;
+	 float scale_rand;
+	 float start_scale;
+	 float final_scale;
+	 float trans_rand;
+	 float start_trans;
+	 float final_trans;
+ };
+
+ //---
+
+
+ const __declspec(align(8)) struct MasterProperty
+ {
+	 DBObj dbobj;
+	 EnumMapper m_emapper;
+	 HashTable<unsigned long, BasePropertyDesc*, 0> m_properties;
+ };
+
+
+ //---
+
+
+  __unaligned __declspec(align(1))  struct FontCharDesc
+ {
+	 unsigned __int16 m_Unicode;
+	 unsigned __int16 m_OffsetX;
+	 unsigned __int16 m_OffsetY;
+	 char m_Width;
+	 char m_Height;
+	 char m_HorizontalOffsetBefore;
+	 char m_HorizontalOffsetAfter;
+	 char m_VerticalOffsetBefore;
+ };
+
+ struct Font
+ {
+	 DBObj dbobj;
+	 unsigned int maxCharHeight;
+	 unsigned int maxCharWidth;
+	 unsigned int numCharacters;
+	 FontCharDesc* charDescs;
+	 unsigned int m_NumHorizontalBorderPixels;
+	 unsigned int m_NumVerticalBorderPixels;
+	 int m_BaselineOffset;
+	 PStringBase_char m_ForegroundSurfaceFileName;
+	 unsigned int m_ForegroundSurfaceDataID; //did
+	 RenderSurface* m_pForegroundSurface;
+	 PStringBase_char m_BackgroundSurfaceFileName;
+	 unsigned int m_BackgroundSurfaceDataID; //did
+	 RenderSurface* m_pBackgroundSurface;
+	 unsigned __int16 minUnicodeChar;
+	 unsigned __int16 maxUnicodeChar;
+	 unsigned int unicodeRangeLength;
+	 unsigned __int16* characterMap;
+ };
+
+
+ //---
+
+ struct FontLocal //Same data structure as font
+ {
+	 Font font;
+ };
+
+ //---
+
+
+ struct CLanguageInfo
+ {
+	 DBObj dbobj;
+	 int version;
+	 unsigned __int16 base;
+	 unsigned __int16 numDecimalDigits;
+	 bool leadingZero;
+	 unsigned __int16 groupingSize;
+	 PStringBase_ushort numerals;
+	 PStringBase_ushort decimalSeperator;
+	 PStringBase_ushort groupingSeperator;
+	 PStringBase_ushort negativeNumberFormat;
+	 bool isZeroSingular;
+	 bool isOneSingular;
+	 bool isNegativeOneSingular;
+	 bool isTwoOrMoreSingular;
+	 bool isNegativeTwoOrLessSingular;
+	 PStringBase_ushort treasurePrefixLetters;
+	 PStringBase_ushort treasureMiddleLetters;
+	 PStringBase_ushort treasureSuffixLetters;
+	 PStringBase_ushort malePlayerLetters;
+	 PStringBase_ushort femalePlayerLetters;
+	 unsigned int m_ImeEnabledSetting;
+	 unsigned int m_symbolColor;
+	 unsigned int m_symbolColorText;
+	 unsigned int m_symbolHeight;
+	 unsigned int m_symbolTranslucence;
+	 unsigned int m_symbolPlacement;
+	 unsigned int m_candColorBase;
+	 unsigned int m_candColorBorder;
+	 unsigned int m_candColorText;
+	 unsigned int m_compColorInput;
+	 unsigned int m_compColorTargetConv;
+	 unsigned int m_compColorConverted;
+	 unsigned int m_compColorTargetNotConv;
+	 unsigned int m_compColorInputErr;
+	 unsigned int m_compTranslucence;
+	 unsigned int m_compColorText;
+	 unsigned int m_otherIME;
+	 int m_wordWrapOnSpace;
+	 PStringBase_ushort m_additionalSettings;
+	 unsigned int m_additionalFlags;
+ };
+
+ //---
+
+
+ struct BaseProperty
+ {
+	 BasePropertyDesc* m_pcPropertyDesc;
+	 BasePropertyValue* m_pcPropertyValue;
+ };
+
+
+ const struct PropertyCollection
+ {
+	 PropertyCollectionVtbl* vfptr;
+	 AutoGrowHashTable<unsigned long, BaseProperty> m_hashProperties;
+ };
+
+ struct DBPropertyCollection
+ {
+	 PropertyCollection propertycollection;
+	 DBObj dbobj;
+ };
 
 #endif

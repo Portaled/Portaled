@@ -1882,15 +1882,6 @@ struct ConstantSound : AmbientSound
 };
 
 
-struct SurfInfo
-{
-  unsigned int palcode;
-  unsigned int lcell_count;
-  CSurface *surface;
-  unsigned int surf_num;
-};
-
-
 struct PalShiftSubPal
 {
   unsigned int sub_pal_index;
@@ -1936,15 +1927,6 @@ struct AC1Legacy_SmartArray<PalShiftTerrainPal *>
 };
 
 
-struct PalShiftTex
-{
-  IDClass<_tagDataID,32,0> tex_gid;
-  AC1Legacy_SmartArray<PalShiftSubPal *> sub_pal;
-  AC1Legacy_SmartArray<PalShiftRoadCode *> road_code;
-  AC1Legacy_SmartArray<PalShiftTerrainPal *> terrain_pal;
-};
-
-
 struct AC1Legacy_SmartArray<PalShiftTex *>
 {
   PalShiftTex **m_data;
@@ -1953,21 +1935,6 @@ struct AC1Legacy_SmartArray<PalShiftTex *>
 };
 
 
-struct PalShift
-{
-  unsigned int cur_tex;
-  AC1Legacy_SmartArray<PalShiftTex *> land_tex;
-  Subpalette *sub_pals;
-  unsigned int maxsubs;
-};
-
-
-struct TerrainAlphaMap
-{
-  unsigned int tcode;
-  IDClass<_tagDataID,32,0> tex_gid;
-  ImgTex *texture;
-};
 
 
 struct AC1Legacy_SmartArray<TerrainAlphaMap *>
@@ -1975,14 +1942,6 @@ struct AC1Legacy_SmartArray<TerrainAlphaMap *>
   TerrainAlphaMap **m_data;
   unsigned int m_size;
   unsigned int m_num;
-};
-
-
-struct RoadAlphaMap
-{
-  unsigned int rcode;
-  IDClass<_tagDataID,32,0> road_tex_gid;
-  ImgTex *texture;
 };
 
 
@@ -1994,23 +1953,6 @@ struct AC1Legacy_SmartArray<RoadAlphaMap *>
 };
 
 
-struct TerrainTex
-{
-  IDClass<_tagDataID,32,0> tex_gid;
-  ImgTex *base_texture;
-  float min_slope;
-  unsigned int tex_tiling;
-  unsigned int max_vert_bright;
-  unsigned int min_vert_bright;
-  unsigned int max_vert_saturate;
-  unsigned int min_vert_saturate;
-  unsigned int max_vert_hue;
-  unsigned int min_vert_hue;
-  unsigned int detail_tex_tiling;
-  IDClass<_tagDataID,32,0> detail_tex_gid;
-};
-
-
 struct AC1Legacy_SmartArray<TerrainTex *>
 {
   TerrainTex **m_data;
@@ -2019,28 +1961,11 @@ struct AC1Legacy_SmartArray<TerrainTex *>
 };
 
 
-struct TMTerrainDesc
-{
-  LandDefs_TerrainType terrain_type;
-  AC1Legacy_SmartArray<TerrainTex *> terrain_tex;
-};
-
-
 struct AC1Legacy_SmartArray<TMTerrainDesc *>
 {
   TMTerrainDesc **m_data;
   unsigned int m_size;
   unsigned int m_num;
-};
-
-
-struct TexMerge
-{
-  unsigned int base_tex_size;
-  AC1Legacy_SmartArray<TerrainAlphaMap *> corner_terrain_maps;
-  AC1Legacy_SmartArray<TerrainAlphaMap *> side_terrain_maps;
-  AC1Legacy_SmartArray<RoadAlphaMap *> road_maps;
-  AC1Legacy_SmartArray<TMTerrainDesc *> terrain_desc;
 };
 
 
@@ -2055,26 +1980,6 @@ struct AC1Legacy_SmartArray<CSurface *>
 };
 
 
-struct LandSurf
-{
-  PalShift *pal_shift;
-  TexMerge *tex_merge;
-  LongNIValHash<SurfInfo *> *surf_info;
-  unsigned int num_lsurf;
-  CSurface **lsurf;
-  unsigned int num_unique_surfaces;
-  unsigned int num_block_surfs;
-  AC1Legacy_SmartArray<CSurface *> block_surf_array;
-  char *curr_tex;
-};
-
-
-struct CSceneType
-{
-  PStringBase<char> scene_name;
-  SmartArray<IDClass<_tagDataID,32,0>,1> scenes;
-  AmbientSTBDesc *sound_table_desc;
-};
 
 
 struct AC1Legacy_SmartArray<CSceneType *>
@@ -2085,12 +1990,6 @@ struct AC1Legacy_SmartArray<CSceneType *>
 };
 
 
-struct CTerrainType
-{
-  AC1Legacy_PStringBase<char> terrain_name;
-  RGBAUnion terrain_color;
-  AC1Legacy_SmartArray<CSceneType *> scene_types;
-};
 
 
 struct AC1Legacy_SmartArray<CTerrainType *>
@@ -2101,37 +2000,6 @@ struct AC1Legacy_SmartArray<CTerrainType *>
 };
 
 
-struct CTerrainDesc
-{
-  LandSurf *land_surfaces;
-  AC1Legacy_SmartArray<CTerrainType *> terrain_types;
-};
-
-
-struct SkyObject
-{
-  char *object_name;
-  float begin_time;
-  float end_time;
-  float begin_angle;
-  float end_angle;
-  AC1Legacy_Vector3 tex_velocity;
-  unsigned int properties;
-  IDClass<_tagDataID,32,0> default_gfx_object;
-  IDClass<_tagDataID,32,0> default_pes_object;
-};
-
-
-struct SkyObjectReplace
-{
-  unsigned int object_index;
-  SkyObject *object;
-  IDClass<_tagDataID,32,0> gfx_obj_id;
-  float rotate;
-  float transparent;
-  float luminosity;
-  float max_bright;
-};
 
 
 struct AC1Legacy_SmartArray<SkyObjectReplace *>
@@ -2141,22 +2009,6 @@ struct AC1Legacy_SmartArray<SkyObjectReplace *>
   unsigned int m_num;
 };
 
-
-struct SkyTimeOfDay
-{
-  float begin;
-  float dir_bright;
-  float dir_heading;
-  float dir_pitch;
-  RGBAUnion dir_color;
-  float amb_bright;
-  RGBAUnion amb_color;
-  int world_fog;
-  float min_world_fog;
-  float max_world_fog;
-  RGBAUnion world_fog_color;
-  AC1Legacy_SmartArray<SkyObjectReplace *> sky_obj_replace;
-};
 
 
 struct AC1Legacy_SmartArray<SkyTimeOfDay *>
@@ -2175,22 +2027,8 @@ struct AC1Legacy_SmartArray<SkyObject *>
 };
 
 
-struct DayGroup
-{
-  AC1Legacy_PStringBase<char> day_name;
-  float chance_of_occur;
-  AC1Legacy_SmartArray<SkyTimeOfDay *> sky_time;
-  AC1Legacy_SmartArray<SkyObject *> sky_objects;
-};
 
 
-struct FileNameDesc
-{
-  AC1Legacy_PStringBase<char> height_map;
-  AC1Legacy_PStringBase<char> terrain_map;
-  AC1Legacy_PStringBase<char> scene_map;
-  AC1Legacy_PStringBase<char> encounter_type_map;
-};
 
 
 struct AC1Legacy_SmartArray<DayGroup *>
@@ -2201,14 +2039,6 @@ struct AC1Legacy_SmartArray<DayGroup *>
 };
 
 
-struct __declspec(align(8)) SkyDesc
-{
-  unsigned int present_day_group;
-  long double tick_size;
-  long double light_tick_size;
-  AC1Legacy_SmartArray<DayGroup *> day_groups;
-};
-
 
 struct AC1Legacy_SmartArray<AmbientSTBDesc *>
 {
@@ -2218,30 +2048,11 @@ struct AC1Legacy_SmartArray<AmbientSTBDesc *>
 };
 
 
-struct CSoundDesc
-{
-  AC1Legacy_SmartArray<AmbientSTBDesc *> stb_desc;
-};
 
 
-struct CSceneDesc
-{
-  AC1Legacy_SmartArray<CSceneType *> scene_types;
-};
 
 
-struct EncounterType
-{
-  IDClass<_tagDataID,32,0> *encounter;
-};
 
-
-struct CEncounterDesc
-{
-  unsigned int num_encounter_type;
-  EncounterType **encounter_table;
-  char *encounter_map;
-};
 
 
 struct RegionMisc
@@ -2254,26 +2065,6 @@ struct RegionMisc
   IDClass<_tagDataID,32,0> clear_monster;
 };
 
-
-struct CRegionDesc : SerializeUsingPackDBObj
-{
-  unsigned int region_number;
-  AC1Legacy_PStringBase<char> region_name;
-  unsigned int version;
-  int minimize_pal;
-  unsigned int parts_mask;
-  FileNameDesc *file_info;
-  SkyDesc *sky_info;
-  CSoundDesc *sound_info;
-  CSceneDesc *scene_info;
-  CTerrainDesc *terrain_info;
-  CEncounterDesc *encounter_info;
-  WaterDesc *water_info;
-  FogDesc *fog_info;
-  DistanceFogDesc *dist_fog_info;
-  RegionMapDesc *region_map_info;
-  RegionMisc *region_misc;
-};
 
 
 struct PhysicsGlobals
@@ -5653,15 +5444,6 @@ struct CloTextureEffect : PackObj
 };
 
 
-struct CloSubpalEffect : PackObj
-{
-  unsigned int numRanges;
-  unsigned int *rangeStart;
-  unsigned int *rangeLength;
-  IDClass<_tagDataID,32,0> palSet;
-};
-
-
 struct PackableHashIterator<IDClass<_tagDataID,32,0>,ClothingBase>
 {
   PackableHashIterator<IDClass<_tagDataID,32,0>,ClothingBase>Vtbl *vfptr;
@@ -5677,11 +5459,7 @@ struct PackableHashIterator<IDClass<_tagDataID,32,0>,ClothingBase>Vtbl
 };
 
 
-struct ClothingBase : PackObj
-{
-  unsigned int numObjectEffects;
-  CloObjectEffect *objectEffects;
-};
+
 
 
 struct PackableHashData<IDClass<_tagDataID,32,0>,ClothingBase>
@@ -5726,12 +5504,6 @@ struct PackableHashIterator<unsigned long,CloPaletteTemplate>Vtbl
 };
 
 
-struct CloPaletteTemplate : PackObj
-{
-  IDClass<_tagDataID,32,0> iconID;
-  unsigned int numSubpalEffects;
-  CloSubpalEffect *subpalEffects;
-};
 
 
 struct PackableHashData<unsigned long,CloPaletteTemplate>
@@ -5752,18 +5524,7 @@ struct PackableHashTable<unsigned long,CloPaletteTemplate> : PackObj
 };
 
 
-struct ClothingTable : SerializeUsingPackDBObj
-{
-  PackableHashTable<IDClass<_tagDataID,32,0>,ClothingBase> _cloBaseHash;
-  PackableHashTable<unsigned long,CloPaletteTemplate> _paletteTemplatesHash;
-};
 
-
-struct PalSet : SerializeUsingPackDBObj
-{
-  unsigned int num_pals;
-  IDClass<_tagDataID,32,0> *palette_IDs;
-};
 
 
 struct InterfacePtr<PlayerDesc>
@@ -6168,10 +5929,6 @@ struct __declspec(align(4)) LockGrabber<SharedCriticalSection>
 
 
 
-struct DBWave : SerializeUsingPackDBObj, WaveFile
-{
-};
-
 
 struct ChatEmoteData : PackObj
 {
@@ -6216,12 +5973,6 @@ struct PackableHashTable<AC1Legacy_PStringBase<char>,ChatEmoteData> : PackObj
 };
 
 
-struct ChatPoseTable : SerializeUsingPackDBObj
-{
-  PackableHashTable<AC1Legacy_CaseInsensitiveStringBase<AC1Legacy_PStringBase<char> >,AC1Legacy_PStringBase<char> > _chatPoseHash;
-  PackableHashTable<AC1Legacy_PStringBase<char>,ChatEmoteData> _chatEmoteHash;
-};
-
 
 struct AC1Legacy_SmartArray<cWObjHierNode *>
 {
@@ -6230,17 +5981,6 @@ struct AC1Legacy_SmartArray<cWObjHierNode *>
   unsigned int m_num;
 };
 
-
-struct __unaligned __declspec(align(4)) cWObjHierNode : AC1Legacy_SmartArray<cWObjHierNode *>
-{
-  AC1Legacy_PStringBase<char> _menu_name;
-  IDClass<_tagDataID,32,0> _wcid;
-};
-
-
-struct __declspec(align(8)) cWObjHierRootNode : SerializeUsingPackDBObj, cWObjHierNode
-{
-};
 
 
 struct PackableHashData<IDClass<_tagDataID,32,0>,int>
@@ -6258,38 +5998,6 @@ struct PackableHashTable<IDClass<_tagDataID,32,0>,int> : PackObj
   PackableHashData<IDClass<_tagDataID,32,0>,int> **_buckets;
   unsigned int _table_size;
   unsigned int _currNum;
-};
-
-
-struct __declspec(align(8)) BadData : SerializeUsingPackDBObj
-{
-  PackableHashTable<IDClass<_tagDataID,32,0>,int> _bad;
-};
-
-
-struct ObjectDesc
-{
-  IDClass<_tagDataID,32,0> obj_id;
-  Frame base_loc;
-  float freq;
-  float displace_x;
-  float displace_y;
-  float min_scale;
-  float max_scale;
-  float max_rot;
-  float min_slope;
-  float max_slope;
-  int align;
-  int orient;
-  int weenie_obj;
-};
-
-
-struct __declspec(align(8)) Scene : SerializeUsingPackDBObj
-{
-  unsigned int version;
-  unsigned int num_objects;
-  ObjectDesc *objects;
 };
 
 

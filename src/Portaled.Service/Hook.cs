@@ -288,14 +288,40 @@ namespace Portaled.Hook
                 {
                     var newFuncAddr = Marshal.GetFunctionPointerForDelegate(new Del((_asyncCache, _dbobj, _qdid, _dbocache) =>
                     {
-                        var asynccache = Interop.AsyncCache.__CreateInstance(_asyncCache);
                         var dbobj = Interop.DBObj.__CreateInstance(_dbobj);
                         var qdid = Interop.QualifiedDataID.__CreateInstance(_qdid);
                         var dbocache = Interop.DBOCache.__CreateInstance(_dbocache);
-                        DatIOManager.OnBeforeBlockingLoadInto(asynccache, dbobj, qdid, dbocache);
+                        DatIOManager.OnBeforeBlockingLoadInto(dbobj, qdid, dbocache);
                         var res = oldDel(_asyncCache, _dbobj, _qdid, _dbocache);
-                        //var loadedDBObj = Interop.DBObj.__CreateInstance(res);
-                        DatIOManager.OnAfterBlockingLoadInto(asynccache, dbobj, qdid, dbocache);
+                        DatIOManager.OnAfterBlockingLoadInto(dbobj, qdid, dbocache);
+                        return res;
+                    }));
+                    Hook.cHook.Hook(addr, newFuncAddr);
+                }
+            }
+
+            public static class BlockingGetFromDisk
+            {
+                static IntPtr addr = new IntPtr(0x417c60);
+
+                [UnmanagedFunctionPointer(CallingConvention.ThisCall)]
+                public delegate IntPtr Del(IntPtr asyncCache, IntPtr foo, IntPtr qdid, IntPtr dbocache);
+
+                public static Del oldDel = (Del)Marshal.GetDelegateForFunctionPointer(addr, typeof(Del));
+
+                public static void H()
+                {
+                    var newFuncAddr = Marshal.GetFunctionPointerForDelegate(new Del((_asyncCache, foo, _qdid, _dbocache) =>
+                    {
+                        var dbobj = Interop.DBObj.__CreateInstance(foo);
+                        var qdid = Interop.QualifiedDataID.__CreateInstance(_qdid);
+                        var dbocache = Interop.DBOCache.__CreateInstance(_dbocache);
+                        
+                        
+                        DatIOManager.OnBeforeBlockingGetFromDisk(dbobj, qdid, dbocache);
+                        var res = oldDel(_asyncCache, foo, _qdid, _dbocache);
+                        var loadedDBObj = Interop.DBObj.__CreateInstance(res);
+                        DatIOManager.OnAfterBlockingGetFromDisk(dbobj, qdid, dbocache);
                         return res;
                     }));
                     Hook.cHook.Hook(addr, newFuncAddr);
@@ -318,6 +344,7 @@ namespace Portaled.Hook
             CLOCache.Ctor.H();
             //  SmartBox.ProcessObjectNetBlobs.H();
             AsyncCache.BlockingLoadInto.H();
+            AsyncCache.BlockingGetFromDisk.H();
         }
 
         

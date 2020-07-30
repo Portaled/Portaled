@@ -595,16 +595,8 @@ struct IFileNodeNameVtbl
 };
 
 
-const struct PStringBase<char>
-{
-  PSRefBufferCharData<char> *m_charbuffer;
-};
 
 
-struct PSRefBufferCharData<char>
-{
-  char m_data[16];
-};
 
 
 struct SmartArray<PFileNode *,1>
@@ -636,12 +628,6 @@ struct PFileNode : ReferenceCountTemplate_1048576_0
 };
 
 
-struct ReferenceCountTemplate<268435456,0>
-{
-  ReferenceCountTemplate<268435456,0>Vtbl *vfptr;
-  unsigned int m_cRef;
-};
-
 
 struct FileNodeFileInfo : ReferenceCountTemplate<268435456,0>
 {
@@ -656,20 +642,6 @@ struct ReferenceCountTemplate<268435456,0>Vtbl
 {
   void *(__thiscall *__vecDelDtor)(ReferenceCountTemplate<268435456,0> *this, unsigned int);
 };
-
-
-struct PSRefBufferCharData<unsigned short>
-{
-  unsigned __int16 m_data[16];
-};
-
-
-struct PStringBase<unsigned short>
-{
-  PSRefBufferCharData<unsigned short> *m_charbuffer;
-};
-
-
 
 
 

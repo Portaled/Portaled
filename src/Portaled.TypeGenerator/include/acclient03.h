@@ -1546,19 +1546,6 @@ struct AC1Legacy_PStringBaseIter_Common<char>Vtbl
 };
 
 
-struct AC1Legacy_PStringBase<char>
-{
-  AC1Legacy_PSRefBuffer<char> *m_buffer;
-};
-
-
-struct __declspec(align(4)) AC1Legacy_PSRefBuffer<char> : ReferenceCountTemplate<268435456,0>
-{
-  unsigned int m_len;
-  unsigned int m_size;
-  unsigned int m_hash;
-  char m_data[1];
-};
 
 
 struct AC1Legacy_PStringBaseIter_Const<char> : AC1Legacy_PStringBaseIter_Common<char>
@@ -3910,14 +3897,6 @@ struct AutoGrowHashTable<CaseInsensitiveStringBase<PStringBase<char> >,unsigned 
 {
 };
 
-
-struct EnumMapper : DBObj
-{
-  IDClass<_tagDataID,32,0> m_base_emp_did;
-  EnumMapper *m_base_emp;
-  AutoGrowHashTable<unsigned long,CaseInsensitiveStringBase<PStringBase<char> > > m_id_to_string_map;
-  AutoGrowHashTable<CaseInsensitiveStringBase<PStringBase<char> >,unsigned long> m_string_to_id_map;
-};
 
 
 struct IntrusiveHashTable<unsigned long,HashTableData<unsigned long,CaseInsensitiveStringBase<PStringBase<char> > > *,1>

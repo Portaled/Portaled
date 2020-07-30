@@ -258,11 +258,6 @@ struct AutoGrowHashTable<unsigned long,BaseProperty> : HashTable<unsigned long,B
 };
 
 
-const struct PropertyCollection
-{
-  PropertyCollectionVtbl *vfptr;
-  AutoGrowHashTable<unsigned long,BaseProperty> m_hashProperties;
-};
 
 
 struct IntrusiveHashTable<unsigned long,HashTableData<unsigned long,StringInfoData *> *,0>
@@ -349,12 +344,6 @@ struct IntrusiveHashData<unsigned long,HashTableData<unsigned long,BaseProperty>
   HashTableData<unsigned long,BaseProperty> *m_hashNext;
 };
 
-
-struct BaseProperty
-{
-  BasePropertyDesc *m_pcPropertyDesc;
-  BasePropertyValue *m_pcPropertyValue;
-};
 
 
 struct HashTableData<unsigned long,BaseProperty> : IntrusiveHashData<unsigned long,HashTableData<unsigned long,BaseProperty> *>
@@ -6072,23 +6061,6 @@ struct PackableHashTable<unsigned long,long> : PackObj
   unsigned int _currNum;
 };
 
-
-struct PackableHashData<unsigned long,int>
-{
-  unsigned int _key;
-  int _data;
-  PackableHashData<unsigned long,int> *_next;
-  int _hashVal;
-};
-
-
-struct PackableHashTable<unsigned long,int> : PackObj
-{
-  int m_fThrowawayDuplicateKeysOnUnPack;
-  PackableHashData<unsigned long,int> **_buckets;
-  unsigned int _table_size;
-  unsigned int _currNum;
-};
 
 
 struct PackableHashData<unsigned long,double>

@@ -97,6 +97,7 @@
     <Content Include="include\hash.h" />
     <Content Include="include\list.h" />
     <Content Include="include\primitive.h" />
+    <Content Include="include\string.h" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

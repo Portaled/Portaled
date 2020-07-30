@@ -1840,136 +1840,358 @@ SurfaceWindow& (SurfaceWindow::*_610)(SurfaceWindow&&) = &SurfaceWindow::operato
 extern "C" { void RenderSurface_RenderSurface(void* __instance) { new (__instance) RenderSurface(); } }
 extern "C" { void RenderSurface_RenderSurface___1__S_RenderSurface(void* __instance, const RenderSurface& _0) { new (__instance) RenderSurface(_0); } }
 RenderSurface& (RenderSurface::*_611)(RenderSurface&&) = &RenderSurface::operator=;
+extern "C" { void IUnknown_IUnknown(void* __instance) { new (__instance) IUnknown(); } }
+extern "C" { void IUnknown_IUnknown___1__S_IUnknown(void* __instance, const IUnknown& _0) { new (__instance) IUnknown(_0); } }
+IUnknown& (IUnknown::*_612)(IUnknown&&) = &IUnknown::operator=;
+extern "C" { void IDirect3DResource9_IDirect3DResource9(void* __instance) { new (__instance) IDirect3DResource9(); } }
+extern "C" { void IDirect3DResource9_IDirect3DResource9___1__S_IDirect3DResource9(void* __instance, const IDirect3DResource9& _0) { new (__instance) IDirect3DResource9(_0); } }
+IDirect3DResource9& (IDirect3DResource9::*_613)(IDirect3DResource9&&) = &IDirect3DResource9::operator=;
+extern "C" { void IDirect3DSurface9_IDirect3DSurface9(void* __instance) { new (__instance) IDirect3DSurface9(); } }
+extern "C" { void IDirect3DSurface9_IDirect3DSurface9___1__S_IDirect3DSurface9(void* __instance, const IDirect3DSurface9& _0) { new (__instance) IDirect3DSurface9(_0); } }
+IDirect3DSurface9& (IDirect3DSurface9::*_614)(IDirect3DSurface9&&) = &IDirect3DSurface9::operator=;
+extern "C" { void RenderSurfaceD3D_RenderSurfaceD3D(void* __instance) { new (__instance) RenderSurfaceD3D(); } }
+extern "C" { void RenderSurfaceD3D_RenderSurfaceD3D___1__S_RenderSurfaceD3D(void* __instance, const RenderSurfaceD3D& _0) { new (__instance) RenderSurfaceD3D(_0); } }
+RenderSurfaceD3D& (RenderSurfaceD3D::*_615)(RenderSurfaceD3D&&) = &RenderSurfaceD3D::operator=;
 extern "C" { void RenderTexture_RenderTexture(void* __instance) { new (__instance) RenderTexture(); } }
 extern "C" { void RenderTexture_RenderTexture___1__S_RenderTexture(void* __instance, const RenderTexture& _0) { new (__instance) RenderTexture(_0); } }
-RenderTexture& (RenderTexture::*_612)(RenderTexture&&) = &RenderTexture::operator=;
+RenderTexture& (RenderTexture::*_616)(RenderTexture&&) = &RenderTexture::operator=;
 extern "C" { void Palette_Palette(void* __instance) { new (__instance) Palette(); } }
 extern "C" { void Palette_Palette___1__S_Palette(void* __instance, const Palette& _0) { new (__instance) Palette(_0); } }
-Palette& (Palette::*_613)(Palette&&) = &Palette::operator=;
+Palette& (Palette::*_617)(Palette&&) = &Palette::operator=;
 extern "C" { void ImgTex_ImgTex(void* __instance) { new (__instance) ImgTex(); } }
 extern "C" { void ImgTex_ImgTex___1__S_ImgTex(void* __instance, const ImgTex& _0) { new (__instance) ImgTex(_0); } }
-ImgTex& (ImgTex::*_614)(ImgTex&&) = &ImgTex::operator=;
+ImgTex& (ImgTex::*_618)(ImgTex&&) = &ImgTex::operator=;
 extern "C" { void CSurface_CSurface(void* __instance) { new (__instance) CSurface(); } }
 extern "C" { void CSurface_CSurface___1__S_CSurface(void* __instance, const CSurface& _0) { new (__instance) CSurface(_0); } }
-CSurface& (CSurface::*_615)(CSurface&&) = &CSurface::operator=;
+CSurface& (CSurface::*_619)(CSurface&&) = &CSurface::operator=;
 extern "C" { void CPhysicsPart_CPhysicsPart(void* __instance) { new (__instance) CPhysicsPart(); } }
 extern "C" { void CPhysicsPart_CPhysicsPart___1__S_CPhysicsPart(void* __instance, const CPhysicsPart& _0) { new (__instance) CPhysicsPart(_0); } }
-CPhysicsPart& (CPhysicsPart::*_616)(CPhysicsPart&&) = &CPhysicsPart::operator=;
+CPhysicsPart& (CPhysicsPart::*_620)(CPhysicsPart&&) = &CPhysicsPart::operator=;
 extern "C" { void LocationType_LocationType(void* __instance) { new (__instance) LocationType(); } }
 extern "C" { void LocationType_LocationType___1__S_LocationType(void* __instance, const LocationType& _0) { new (__instance) LocationType(_0); } }
-LocationType& (LocationType::*_617)(LocationType&&) = &LocationType::operator=;
+LocationType& (LocationType::*_621)(LocationType&&) = &LocationType::operator=;
 extern "C" { void PlacementType_PlacementType(void* __instance) { new (__instance) PlacementType(); } }
 extern "C" { void PlacementType_PlacementType___1__S_PlacementType(void* __instance, const PlacementType& _0) { new (__instance) PlacementType(_0); } }
-PlacementType& (PlacementType::*_618)(PlacementType&&) = &PlacementType::operator=;
+PlacementType& (PlacementType::*_622)(PlacementType&&) = &PlacementType::operator=;
 extern "C" { void CCylSphere_CCylSphere(void* __instance) { new (__instance) CCylSphere(); } }
 extern "C" { void CCylSphere_CCylSphere___1__S_CCylSphere(void* __instance, const CCylSphere& _0) { new (__instance) CCylSphere(_0); } }
-CCylSphere& (CCylSphere::*_619)(CCylSphere&&) = &CCylSphere::operator=;
+CCylSphere& (CCylSphere::*_623)(CCylSphere&&) = &CCylSphere::operator=;
 extern "C" { void CSphere_CSphere(void* __instance) { new (__instance) CSphere(); } }
 extern "C" { void CSphere_CSphere___1__S_CSphere(void* __instance, const CSphere& _0) { new (__instance) CSphere(_0); } }
-CSphere& (CSphere::*_620)(CSphere&&) = &CSphere::operator=;
+CSphere& (CSphere::*_624)(CSphere&&) = &CSphere::operator=;
 extern "C" { void CSetup_CSetup(void* __instance) { new (__instance) CSetup(); } }
 extern "C" { void CSetup_CSetup___1__S_CSetup(void* __instance, const CSetup& _0) { new (__instance) CSetup(_0); } }
-CSetup& (CSetup::*_621)(CSetup&&) = &CSetup::operator=;
+CSetup& (CSetup::*_625)(CSetup&&) = &CSetup::operator=;
 extern "C" { void LIGHTLIST_LIGHTLIST(void* __instance) { new (__instance) LIGHTLIST(); } }
 extern "C" { void LIGHTLIST_LIGHTLIST___1__S_LIGHTLIST(void* __instance, const LIGHTLIST& _0) { new (__instance) LIGHTLIST(_0); } }
-LIGHTLIST& (LIGHTLIST::*_622)(LIGHTLIST&&) = &LIGHTLIST::operator=;
+LIGHTLIST& (LIGHTLIST::*_626)(LIGHTLIST&&) = &LIGHTLIST::operator=;
 extern "C" { void MotionState_MotionState(void* __instance) { new (__instance) MotionState(); } }
 extern "C" { void MotionState_MotionState___1__S_MotionState(void* __instance, const MotionState& _0) { new (__instance) MotionState(_0); } }
-MotionState& (MotionState::*_623)(MotionState&&) = &MotionState::operator=;
+MotionState& (MotionState::*_627)(MotionState&&) = &MotionState::operator=;
 extern "C" { void MotionTableManager_AnimNode_MotionTableManager_AnimNode(void* __instance) { new (__instance) MotionTableManager_AnimNode(); } }
 extern "C" { void MotionTableManager_AnimNode_MotionTableManager_AnimNode___1__S_MotionTableManager_AnimNode(void* __instance, const MotionTableManager_AnimNode& _0) { new (__instance) MotionTableManager_AnimNode(_0); } }
-MotionTableManager_AnimNode& (MotionTableManager_AnimNode::*_624)(MotionTableManager_AnimNode&&) = &MotionTableManager_AnimNode::operator=;
+MotionTableManager_AnimNode& (MotionTableManager_AnimNode::*_628)(MotionTableManager_AnimNode&&) = &MotionTableManager_AnimNode::operator=;
 extern "C" { void AnimData_AnimData(void* __instance) { new (__instance) AnimData(); } }
 extern "C" { void AnimData_AnimData___1__S_AnimData(void* __instance, const AnimData& _0) { new (__instance) AnimData(_0); } }
-AnimData& (AnimData::*_625)(AnimData&&) = &AnimData::operator=;
+AnimData& (AnimData::*_629)(AnimData&&) = &AnimData::operator=;
 extern "C" { void MotionData_MotionData(void* __instance) { new (__instance) MotionData(); } }
 extern "C" { void MotionData_MotionData___1__S_MotionData(void* __instance, const MotionData& _0) { new (__instance) MotionData(_0); } }
-MotionData& (MotionData::*_626)(MotionData&&) = &MotionData::operator=;
+MotionData& (MotionData::*_630)(MotionData&&) = &MotionData::operator=;
 extern "C" { void CMotionTable_CMotionTable(void* __instance) { new (__instance) CMotionTable(); } }
 extern "C" { void CMotionTable_CMotionTable___1__S_CMotionTable(void* __instance, const CMotionTable& _0) { new (__instance) CMotionTable(_0); } }
-CMotionTable& (CMotionTable::*_627)(CMotionTable&&) = &CMotionTable::operator=;
+CMotionTable& (CMotionTable::*_631)(CMotionTable&&) = &CMotionTable::operator=;
 extern "C" { void MotionTableManager_MotionTableManager(void* __instance) { new (__instance) MotionTableManager(); } }
 extern "C" { void MotionTableManager_MotionTableManager___1__S_MotionTableManager(void* __instance, const MotionTableManager& _0) { new (__instance) MotionTableManager(_0); } }
-MotionTableManager& (MotionTableManager::*_628)(MotionTableManager&&) = &MotionTableManager::operator=;
+MotionTableManager& (MotionTableManager::*_632)(MotionTableManager&&) = &MotionTableManager::operator=;
 extern "C" { void CPartArray_CPartArray(void* __instance) { new (__instance) CPartArray(); } }
 extern "C" { void CPartArray_CPartArray___1__S_CPartArray(void* __instance, const CPartArray& _0) { new (__instance) CPartArray(_0); } }
-CPartArray& (CPartArray::*_629)(CPartArray&&) = &CPartArray::operator=;
+CPartArray& (CPartArray::*_633)(CPartArray&&) = &CPartArray::operator=;
 extern "C" { void CPhysicsObj_CPhysicsObj(void* __instance) { new (__instance) CPhysicsObj(); } }
 extern "C" { void CPhysicsObj_CPhysicsObj___1__S_CPhysicsObj(void* __instance, const CPhysicsObj& _0) { new (__instance) CPhysicsObj(_0); } }
-CPhysicsObj& (CPhysicsObj::*_630)(CPhysicsObj&&) = &CPhysicsObj::operator=;
+CPhysicsObj& (CPhysicsObj::*_634)(CPhysicsObj&&) = &CPhysicsObj::operator=;
 extern "C" { void CObjCell_CObjCell(void* __instance) { new (__instance) CObjCell(); } }
 extern "C" { void CObjCell_CObjCell___1__S_CObjCell(void* __instance, const CObjCell& _0) { new (__instance) CObjCell(_0); } }
-CObjCell& (CObjCell::*_631)(CObjCell&&) = &CObjCell::operator=;
+CObjCell& (CObjCell::*_635)(CObjCell&&) = &CObjCell::operator=;
 extern "C" { void GameSky_GameSky(void* __instance) { new (__instance) GameSky(); } }
 extern "C" { void GameSky_GameSky___1__S_GameSky(void* __instance, const GameSky& _0) { new (__instance) GameSky(_0); } }
-GameSky& (GameSky::*_632)(GameSky&&) = &GameSky::operator=;
+GameSky& (GameSky::*_636)(GameSky&&) = &GameSky::operator=;
 extern "C" { void LScape_LScape(void* __instance) { new (__instance) LScape(); } }
 extern "C" { void LScape_LScape___1__S_LScape(void* __instance, const LScape& _0) { new (__instance) LScape(_0); } }
-LScape& (LScape::*_633)(LScape&&) = &LScape::operator=;
+LScape& (LScape::*_637)(LScape&&) = &LScape::operator=;
 extern "C" { void SmartBox_SmartBox(void* __instance) { new (__instance) SmartBox(); } }
 extern "C" { void SmartBox_SmartBox___1__S_SmartBox(void* __instance, const SmartBox& _0) { new (__instance) SmartBox(_0); } }
-SmartBox& (SmartBox::*_634)(SmartBox&&) = &SmartBox::operator=;
+SmartBox& (SmartBox::*_638)(SmartBox&&) = &SmartBox::operator=;
 extern "C" { void IInputActionCallback_IInputActionCallback(void* __instance) { new (__instance) IInputActionCallback(); } }
 extern "C" { void IInputActionCallback_IInputActionCallback___1__S_IInputActionCallback(void* __instance, const IInputActionCallback& _0) { new (__instance) IInputActionCallback(_0); } }
-IInputActionCallback& (IInputActionCallback::*_635)(IInputActionCallback&&) = &IInputActionCallback::operator=;
+IInputActionCallback& (IInputActionCallback::*_639)(IInputActionCallback&&) = &IInputActionCallback::operator=;
 extern "C" { void CommandInterpreter_CommandInterpreter___1__S_CommandInterpreter(void* __instance, const CommandInterpreter& _0) { new (__instance) CommandInterpreter(_0); } }
-TDynamicCircularArray& (TDynamicCircularArray::*_636)(TDynamicCircularArray&&) = &TDynamicCircularArray::operator=;
+TDynamicCircularArray& (TDynamicCircularArray::*_640)(TDynamicCircularArray&&) = &TDynamicCircularArray::operator=;
 extern "C" { void TDynamicCircularArray_TDynamicCircularArray(void* __instance) { new (__instance) TDynamicCircularArray(); } }
 extern "C" { void TDynamicCircularArray_TDynamicCircularArray___1__S_TDynamicCircularArray(void* __instance, const TDynamicCircularArray& _0) { new (__instance) TDynamicCircularArray(_0); } }
 extern "C" { void QualifiedDataID_QualifiedDataID(void* __instance) { new (__instance) QualifiedDataID(); } }
 extern "C" { void QualifiedDataID_QualifiedDataID___1__S_QualifiedDataID(void* __instance, const QualifiedDataID& _0) { new (__instance) QualifiedDataID(_0); } }
-QualifiedDataID& (QualifiedDataID::*_637)(QualifiedDataID&&) = &QualifiedDataID::operator=;
+QualifiedDataID& (QualifiedDataID::*_641)(QualifiedDataID&&) = &QualifiedDataID::operator=;
 extern "C" { void QualifiedDataIDArray_QualifiedDataIDArray(void* __instance) { new (__instance) QualifiedDataIDArray(); } }
 extern "C" { void QualifiedDataIDArray_QualifiedDataIDArray___1__S_QualifiedDataIDArray(void* __instance, const QualifiedDataIDArray& _0) { new (__instance) QualifiedDataIDArray(_0); } }
-QualifiedDataIDArray& (QualifiedDataIDArray::*_638)(QualifiedDataIDArray&&) = &QualifiedDataIDArray::operator=;
+QualifiedDataIDArray& (QualifiedDataIDArray::*_642)(QualifiedDataIDArray&&) = &QualifiedDataIDArray::operator=;
 extern "C" { void c__U_E6132C438F0B638693FB2F3E0AF1DACE5_E6132C438F0B638693FB2F3E0AF1DACE5(void* __instance) { new (__instance) E6132C438F0B638693FB2F3E0AF1DACE5(); } }
 extern "C" { void c__U_E6132C438F0B638693FB2F3E0AF1DACE5_E6132C438F0B638693FB2F3E0AF1DACE5___1__U_E6132C438F0B638693FB2F3E0AF1DACE5(void* __instance, const E6132C438F0B638693FB2F3E0AF1DACE5& _0) { new (__instance) E6132C438F0B638693FB2F3E0AF1DACE5(_0); } }
-E6132C438F0B638693FB2F3E0AF1DACE5& (E6132C438F0B638693FB2F3E0AF1DACE5::*_639)(E6132C438F0B638693FB2F3E0AF1DACE5&&) = &E6132C438F0B638693FB2F3E0AF1DACE5::operator=;
+E6132C438F0B638693FB2F3E0AF1DACE5& (E6132C438F0B638693FB2F3E0AF1DACE5::*_643)(E6132C438F0B638693FB2F3E0AF1DACE5&&) = &E6132C438F0B638693FB2F3E0AF1DACE5::operator=;
 extern "C" { void AsyncCache_CAsyncRequest_AsyncCache_CAsyncRequest(void* __instance) { new (__instance) AsyncCache_CAsyncRequest(); } }
 extern "C" { void AsyncCache_CAsyncRequest_AsyncCache_CAsyncRequest___1__S_AsyncCache_CAsyncRequest(void* __instance, const AsyncCache_CAsyncRequest& _0) { new (__instance) AsyncCache_CAsyncRequest(_0); } }
-AsyncCache_CAsyncRequest& (AsyncCache_CAsyncRequest::*_640)(AsyncCache_CAsyncRequest&&) = &AsyncCache_CAsyncRequest::operator=;
+AsyncCache_CAsyncRequest& (AsyncCache_CAsyncRequest::*_644)(AsyncCache_CAsyncRequest&&) = &AsyncCache_CAsyncRequest::operator=;
 extern "C" { void AsyncCacheCallback_AsyncCacheCallback(void* __instance) { new (__instance) AsyncCacheCallback(); } }
 extern "C" { void AsyncCacheCallback_AsyncCacheCallback___1__S_AsyncCacheCallback(void* __instance, const AsyncCacheCallback& _0) { new (__instance) AsyncCacheCallback(_0); } }
-AsyncCacheCallback& (AsyncCacheCallback::*_641)(AsyncCacheCallback&&) = &AsyncCacheCallback::operator=;
-AsyncCache& (AsyncCache::*_642)(AsyncCache&&) = &AsyncCache::operator=;
+AsyncCacheCallback& (AsyncCacheCallback::*_645)(AsyncCacheCallback&&) = &AsyncCacheCallback::operator=;
+AsyncCache& (AsyncCache::*_646)(AsyncCache&&) = &AsyncCache::operator=;
 extern "C" { void AsyncCache_AsyncCache(void* __instance) { new (__instance) AsyncCache(); } }
 extern "C" { void AsyncCache_AsyncCache___1__S_AsyncCache(void* __instance, const AsyncCache& _0) { new (__instance) AsyncCache(_0); } }
 extern "C" { void IDataGraph_IDataGraph(void* __instance) { new (__instance) IDataGraph(); } }
 extern "C" { void IDataGraph_IDataGraph___1__S_IDataGraph(void* __instance, const IDataGraph& _0) { new (__instance) IDataGraph(_0); } }
-IDataGraph& (IDataGraph::*_643)(IDataGraph&&) = &IDataGraph::operator=;
+IDataGraph& (IDataGraph::*_647)(IDataGraph&&) = &IDataGraph::operator=;
 extern "C" { void DBCache_DBCache(void* __instance) { new (__instance) DBCache(); } }
 extern "C" { void DBCache_DBCache___1__S_DBCache(void* __instance, const DBCache& _0) { new (__instance) DBCache(_0); } }
-DBCache& (DBCache::*_644)(DBCache&&) = &DBCache::operator=;
+DBCache& (DBCache::*_648)(DBCache&&) = &DBCache::operator=;
+extern "C" { void WaveFile_WaveFile(void* __instance) { new (__instance) WaveFile(); } }
+extern "C" { void WaveFile_WaveFile___1__S_WaveFile(void* __instance, const WaveFile& _0) { new (__instance) WaveFile(_0); } }
+WaveFile& (WaveFile::*_649)(WaveFile&&) = &WaveFile::operator=;
+extern "C" { void DBWave_DBWave(void* __instance) { new (__instance) DBWave(); } }
+extern "C" { void DBWave_DBWave___1__S_DBWave(void* __instance, const DBWave& _0) { new (__instance) DBWave(_0); } }
+DBWave& (DBWave::*_650)(DBWave&&) = &DBWave::operator=;
+extern "C" { void ChatPoseTable_ChatPoseTable(void* __instance) { new (__instance) ChatPoseTable(); } }
+extern "C" { void ChatPoseTable_ChatPoseTable___1__S_ChatPoseTable(void* __instance, const ChatPoseTable& _0) { new (__instance) ChatPoseTable(_0); } }
+ChatPoseTable& (ChatPoseTable::*_651)(ChatPoseTable&&) = &ChatPoseTable::operator=;
+extern "C" { void ReferenceCountTemplate_268435456_0_ReferenceCountTemplate_268435456_0(void* __instance) { new (__instance) ReferenceCountTemplate_268435456_0(); } }
+extern "C" { void ReferenceCountTemplate_268435456_0_ReferenceCountTemplate_268435456_0___1__S_ReferenceCountTemplate_268435456_0(void* __instance, const ReferenceCountTemplate_268435456_0& _0) { new (__instance) ReferenceCountTemplate_268435456_0(_0); } }
+ReferenceCountTemplate_268435456_0& (ReferenceCountTemplate_268435456_0::*_652)(ReferenceCountTemplate_268435456_0&&) = &ReferenceCountTemplate_268435456_0::operator=;
+extern "C" { void AC1Legacy_PSRefBuffer_char_AC1Legacy_PSRefBuffer_char(void* __instance) { new (__instance) AC1Legacy_PSRefBuffer_char(); } }
+extern "C" { void AC1Legacy_PSRefBuffer_char_AC1Legacy_PSRefBuffer_char___1__S_AC1Legacy_PSRefBuffer_char(void* __instance, const AC1Legacy_PSRefBuffer_char& _0) { new (__instance) AC1Legacy_PSRefBuffer_char(_0); } }
+AC1Legacy_PSRefBuffer_char& (AC1Legacy_PSRefBuffer_char::*_653)(AC1Legacy_PSRefBuffer_char&&) = &AC1Legacy_PSRefBuffer_char::operator=;
+extern "C" { void AC1Legacy_PStringBase_char_AC1Legacy_PStringBase_char(void* __instance) { new (__instance) AC1Legacy_PStringBase_char(); } }
+extern "C" { void AC1Legacy_PStringBase_char_AC1Legacy_PStringBase_char___1__S_AC1Legacy_PStringBase_char(void* __instance, const AC1Legacy_PStringBase_char& _0) { new (__instance) AC1Legacy_PStringBase_char(_0); } }
+AC1Legacy_PStringBase_char& (AC1Legacy_PStringBase_char::*_654)(AC1Legacy_PStringBase_char&&) = &AC1Legacy_PStringBase_char::operator=;
+extern "C" { void cWObjHierNode_cWObjHierNode(void* __instance) { new (__instance) cWObjHierNode(); } }
+extern "C" { void cWObjHierNode_cWObjHierNode___1__S_cWObjHierNode(void* __instance, const cWObjHierNode& _0) { new (__instance) cWObjHierNode(_0); } }
+cWObjHierNode& (cWObjHierNode::*_655)(cWObjHierNode&&) = &cWObjHierNode::operator=;
+extern "C" { void cWObjHierRootNode_cWObjHierRootNode(void* __instance) { new (__instance) cWObjHierRootNode(); } }
+extern "C" { void cWObjHierRootNode_cWObjHierRootNode___1__S_cWObjHierRootNode(void* __instance, const cWObjHierRootNode& _0) { new (__instance) cWObjHierRootNode(_0); } }
+cWObjHierRootNode& (cWObjHierRootNode::*_656)(cWObjHierRootNode&&) = &cWObjHierRootNode::operator=;
+extern "C" { void BadData_BadData(void* __instance) { new (__instance) BadData(); } }
+extern "C" { void BadData_BadData___1__S_BadData(void* __instance, const BadData& _0) { new (__instance) BadData(_0); } }
+BadData& (BadData::*_657)(BadData&&) = &BadData::operator=;
+extern "C" { void TabooTable_TabooTable(void* __instance) { new (__instance) TabooTable(); } }
+extern "C" { void TabooTable_TabooTable___1__S_TabooTable(void* __instance, const TabooTable& _0) { new (__instance) TabooTable(_0); } }
+TabooTable& (TabooTable::*_658)(TabooTable&&) = &TabooTable::operator=;
+extern "C" { void TReadOnlyFile2IDTable_TReadOnlyFile2IDTable(void* __instance) { new (__instance) TReadOnlyFile2IDTable(); } }
+extern "C" { void TReadOnlyFile2IDTable_TReadOnlyFile2IDTable___1__S_TReadOnlyFile2IDTable(void* __instance, const TReadOnlyFile2IDTable& _0) { new (__instance) TReadOnlyFile2IDTable(_0); } }
+TReadOnlyFile2IDTable& (TReadOnlyFile2IDTable::*_659)(TReadOnlyFile2IDTable&&) = &TReadOnlyFile2IDTable::operator=;
+extern "C" { void TFileEntry_TFileEntry(void* __instance) { new (__instance) TFileEntry(); } }
+extern "C" { void TFileEntry_TFileEntry___1__S_TFileEntry(void* __instance, const TFileEntry& _0) { new (__instance) TFileEntry(_0); } }
+TFileEntry& (TFileEntry::*_660)(TFileEntry&&) = &TFileEntry::operator=;
+extern "C" { void TDBTypeEntry_TDBTypeEntry(void* __instance) { new (__instance) TDBTypeEntry(); } }
+extern "C" { void TDBTypeEntry_TDBTypeEntry___1__S_TDBTypeEntry(void* __instance, const TDBTypeEntry& _0) { new (__instance) TDBTypeEntry(_0); } }
+TDBTypeEntry& (TDBTypeEntry::*_661)(TDBTypeEntry&&) = &TDBTypeEntry::operator=;
+extern "C" { void TFile2IDTable_TFile2IDTable(void* __instance) { new (__instance) TFile2IDTable(); } }
+extern "C" { void TFile2IDTable_TFile2IDTable___1__S_TFile2IDTable(void* __instance, const TFile2IDTable& _0) { new (__instance) TFile2IDTable(_0); } }
+TFile2IDTable& (TFile2IDTable::*_662)(TFile2IDTable&&) = &TFile2IDTable::operator=;
+extern "C" { void DBFile2IDTable_DBFile2IDTable(void* __instance) { new (__instance) DBFile2IDTable(); } }
+extern "C" { void DBFile2IDTable_DBFile2IDTable___1__S_DBFile2IDTable(void* __instance, const DBFile2IDTable& _0) { new (__instance) DBFile2IDTable(_0); } }
+DBFile2IDTable& (DBFile2IDTable::*_663)(DBFile2IDTable&&) = &DBFile2IDTable::operator=;
+extern "C" { void NameFilterLanguageData_NameFilterLanguageData(void* __instance) { new (__instance) NameFilterLanguageData(); } }
+extern "C" { void NameFilterLanguageData_NameFilterLanguageData___1__S_NameFilterLanguageData(void* __instance, const NameFilterLanguageData& _0) { new (__instance) NameFilterLanguageData(_0); } }
+NameFilterLanguageData& (NameFilterLanguageData::*_664)(NameFilterLanguageData&&) = &NameFilterLanguageData::operator=;
+extern "C" { void NameFilterTable_NameFilterTable(void* __instance) { new (__instance) NameFilterTable(); } }
+extern "C" { void NameFilterTable_NameFilterTable___1__S_NameFilterTable(void* __instance, const NameFilterTable& _0) { new (__instance) NameFilterTable(_0); } }
+NameFilterTable& (NameFilterTable::*_665)(NameFilterTable&&) = &NameFilterTable::operator=;
+extern "C" { void PalSet_PalSet(void* __instance) { new (__instance) PalSet(); } }
+extern "C" { void PalSet_PalSet___1__S_PalSet(void* __instance, const PalSet& _0) { new (__instance) PalSet(_0); } }
+PalSet& (PalSet::*_666)(PalSet&&) = &PalSet::operator=;
+extern "C" { void CloSubpalEffect_CloSubpalEffect(void* __instance) { new (__instance) CloSubpalEffect(); } }
+extern "C" { void CloSubpalEffect_CloSubpalEffect___1__S_CloSubpalEffect(void* __instance, const CloSubpalEffect& _0) { new (__instance) CloSubpalEffect(_0); } }
+CloSubpalEffect& (CloSubpalEffect::*_667)(CloSubpalEffect&&) = &CloSubpalEffect::operator=;
+extern "C" { void CloPaletteTemplate_CloPaletteTemplate(void* __instance) { new (__instance) CloPaletteTemplate(); } }
+extern "C" { void CloPaletteTemplate_CloPaletteTemplate___1__S_CloPaletteTemplate(void* __instance, const CloPaletteTemplate& _0) { new (__instance) CloPaletteTemplate(_0); } }
+CloPaletteTemplate& (CloPaletteTemplate::*_668)(CloPaletteTemplate&&) = &CloPaletteTemplate::operator=;
+extern "C" { void ClothingBase_ClothingBase(void* __instance) { new (__instance) ClothingBase(); } }
+extern "C" { void ClothingBase_ClothingBase___1__S_ClothingBase(void* __instance, const ClothingBase& _0) { new (__instance) ClothingBase(_0); } }
+ClothingBase& (ClothingBase::*_669)(ClothingBase&&) = &ClothingBase::operator=;
+extern "C" { void ClothingTable_ClothingTable(void* __instance) { new (__instance) ClothingTable(); } }
+extern "C" { void ClothingTable_ClothingTable___1__S_ClothingTable(void* __instance, const ClothingTable& _0) { new (__instance) ClothingTable(_0); } }
+ClothingTable& (ClothingTable::*_670)(ClothingTable&&) = &ClothingTable::operator=;
+extern "C" { void ObjectDesc_ObjectDesc(void* __instance) { new (__instance) ObjectDesc(); } }
+extern "C" { void ObjectDesc_ObjectDesc___1__S_ObjectDesc(void* __instance, const ObjectDesc& _0) { new (__instance) ObjectDesc(_0); } }
+ObjectDesc& (ObjectDesc::*_671)(ObjectDesc&&) = &ObjectDesc::operator=;
+extern "C" { void Scene_Scene(void* __instance) { new (__instance) Scene(); } }
+extern "C" { void Scene_Scene___1__S_Scene(void* __instance, const Scene& _0) { new (__instance) Scene(_0); } }
+Scene& (Scene::*_672)(Scene&&) = &Scene::operator=;
+extern "C" { void FileNameDesc_FileNameDesc(void* __instance) { new (__instance) FileNameDesc(); } }
+extern "C" { void FileNameDesc_FileNameDesc___1__S_FileNameDesc(void* __instance, const FileNameDesc& _0) { new (__instance) FileNameDesc(_0); } }
+FileNameDesc& (FileNameDesc::*_673)(FileNameDesc&&) = &FileNameDesc::operator=;
+extern "C" { void SkyObject_SkyObject(void* __instance) { new (__instance) SkyObject(); } }
+extern "C" { void SkyObject_SkyObject___1__S_SkyObject(void* __instance, const SkyObject& _0) { new (__instance) SkyObject(_0); } }
+SkyObject& (SkyObject::*_674)(SkyObject&&) = &SkyObject::operator=;
+extern "C" { void SkyObjectReplace_SkyObjectReplace(void* __instance) { new (__instance) SkyObjectReplace(); } }
+extern "C" { void SkyObjectReplace_SkyObjectReplace___1__S_SkyObjectReplace(void* __instance, const SkyObjectReplace& _0) { new (__instance) SkyObjectReplace(_0); } }
+SkyObjectReplace& (SkyObjectReplace::*_675)(SkyObjectReplace&&) = &SkyObjectReplace::operator=;
+extern "C" { void SkyTimeOfDay_SkyTimeOfDay(void* __instance) { new (__instance) SkyTimeOfDay(); } }
+extern "C" { void SkyTimeOfDay_SkyTimeOfDay___1__S_SkyTimeOfDay(void* __instance, const SkyTimeOfDay& _0) { new (__instance) SkyTimeOfDay(_0); } }
+SkyTimeOfDay& (SkyTimeOfDay::*_676)(SkyTimeOfDay&&) = &SkyTimeOfDay::operator=;
+extern "C" { void DayGroup_DayGroup(void* __instance) { new (__instance) DayGroup(); } }
+extern "C" { void DayGroup_DayGroup___1__S_DayGroup(void* __instance, const DayGroup& _0) { new (__instance) DayGroup(_0); } }
+DayGroup& (DayGroup::*_677)(DayGroup&&) = &DayGroup::operator=;
+extern "C" { void SkyDesc_SkyDesc(void* __instance) { new (__instance) SkyDesc(); } }
+extern "C" { void SkyDesc_SkyDesc___1__S_SkyDesc(void* __instance, const SkyDesc& _0) { new (__instance) SkyDesc(_0); } }
+SkyDesc& (SkyDesc::*_678)(SkyDesc&&) = &SkyDesc::operator=;
+extern "C" { void CSoundDesc_CSoundDesc(void* __instance) { new (__instance) CSoundDesc(); } }
+extern "C" { void CSoundDesc_CSoundDesc___1__S_CSoundDesc(void* __instance, const CSoundDesc& _0) { new (__instance) CSoundDesc(_0); } }
+CSoundDesc& (CSoundDesc::*_679)(CSoundDesc&&) = &CSoundDesc::operator=;
+extern "C" { void CSceneType_CSceneType(void* __instance) { new (__instance) CSceneType(); } }
+extern "C" { void CSceneType_CSceneType___1__S_CSceneType(void* __instance, const CSceneType& _0) { new (__instance) CSceneType(_0); } }
+CSceneType& (CSceneType::*_680)(CSceneType&&) = &CSceneType::operator=;
+extern "C" { void CSceneDesc_CSceneDesc(void* __instance) { new (__instance) CSceneDesc(); } }
+extern "C" { void CSceneDesc_CSceneDesc___1__S_CSceneDesc(void* __instance, const CSceneDesc& _0) { new (__instance) CSceneDesc(_0); } }
+CSceneDesc& (CSceneDesc::*_681)(CSceneDesc&&) = &CSceneDesc::operator=;
+extern "C" { void PalShiftSubPal_PalShiftSubPal(void* __instance) { new (__instance) PalShiftSubPal(); } }
+extern "C" { void PalShiftSubPal_PalShiftSubPal___1__S_PalShiftSubPal(void* __instance, const PalShiftSubPal& _0) { new (__instance) PalShiftSubPal(_0); } }
+PalShiftSubPal& (PalShiftSubPal::*_682)(PalShiftSubPal&&) = &PalShiftSubPal::operator=;
+extern "C" { void PalShiftTerrainPal_PalShiftTerrainPal(void* __instance) { new (__instance) PalShiftTerrainPal(); } }
+extern "C" { void PalShiftTerrainPal_PalShiftTerrainPal___1__S_PalShiftTerrainPal(void* __instance, const PalShiftTerrainPal& _0) { new (__instance) PalShiftTerrainPal(_0); } }
+PalShiftTerrainPal& (PalShiftTerrainPal::*_683)(PalShiftTerrainPal&&) = &PalShiftTerrainPal::operator=;
+extern "C" { void PalShiftRoadCode_PalShiftRoadCode(void* __instance) { new (__instance) PalShiftRoadCode(); } }
+extern "C" { void PalShiftRoadCode_PalShiftRoadCode___1__S_PalShiftRoadCode(void* __instance, const PalShiftRoadCode& _0) { new (__instance) PalShiftRoadCode(_0); } }
+PalShiftRoadCode& (PalShiftRoadCode::*_684)(PalShiftRoadCode&&) = &PalShiftRoadCode::operator=;
+extern "C" { void PalShiftTex_PalShiftTex(void* __instance) { new (__instance) PalShiftTex(); } }
+extern "C" { void PalShiftTex_PalShiftTex___1__S_PalShiftTex(void* __instance, const PalShiftTex& _0) { new (__instance) PalShiftTex(_0); } }
+PalShiftTex& (PalShiftTex::*_685)(PalShiftTex&&) = &PalShiftTex::operator=;
+extern "C" { void Subpalette_Subpalette(void* __instance) { new (__instance) Subpalette(); } }
+extern "C" { void Subpalette_Subpalette___1__S_Subpalette(void* __instance, const Subpalette& _0) { new (__instance) Subpalette(_0); } }
+Subpalette& (Subpalette::*_686)(Subpalette&&) = &Subpalette::operator=;
+extern "C" { void PalShift_PalShift(void* __instance) { new (__instance) PalShift(); } }
+extern "C" { void PalShift_PalShift___1__S_PalShift(void* __instance, const PalShift& _0) { new (__instance) PalShift(_0); } }
+PalShift& (PalShift::*_687)(PalShift&&) = &PalShift::operator=;
+extern "C" { void RoadAlphaMap_RoadAlphaMap(void* __instance) { new (__instance) RoadAlphaMap(); } }
+extern "C" { void RoadAlphaMap_RoadAlphaMap___1__S_RoadAlphaMap(void* __instance, const RoadAlphaMap& _0) { new (__instance) RoadAlphaMap(_0); } }
+RoadAlphaMap& (RoadAlphaMap::*_688)(RoadAlphaMap&&) = &RoadAlphaMap::operator=;
+extern "C" { void TerrainAlphaMap_TerrainAlphaMap(void* __instance) { new (__instance) TerrainAlphaMap(); } }
+extern "C" { void TerrainAlphaMap_TerrainAlphaMap___1__S_TerrainAlphaMap(void* __instance, const TerrainAlphaMap& _0) { new (__instance) TerrainAlphaMap(_0); } }
+TerrainAlphaMap& (TerrainAlphaMap::*_689)(TerrainAlphaMap&&) = &TerrainAlphaMap::operator=;
+extern "C" { void TerrainTex_TerrainTex(void* __instance) { new (__instance) TerrainTex(); } }
+extern "C" { void TerrainTex_TerrainTex___1__S_TerrainTex(void* __instance, const TerrainTex& _0) { new (__instance) TerrainTex(_0); } }
+TerrainTex& (TerrainTex::*_690)(TerrainTex&&) = &TerrainTex::operator=;
+extern "C" { void TMTerrainDesc_TMTerrainDesc(void* __instance) { new (__instance) TMTerrainDesc(); } }
+extern "C" { void TMTerrainDesc_TMTerrainDesc___1__S_TMTerrainDesc(void* __instance, const TMTerrainDesc& _0) { new (__instance) TMTerrainDesc(_0); } }
+TMTerrainDesc& (TMTerrainDesc::*_691)(TMTerrainDesc&&) = &TMTerrainDesc::operator=;
+extern "C" { void TexMerge_TexMerge(void* __instance) { new (__instance) TexMerge(); } }
+extern "C" { void TexMerge_TexMerge___1__S_TexMerge(void* __instance, const TexMerge& _0) { new (__instance) TexMerge(_0); } }
+TexMerge& (TexMerge::*_692)(TexMerge&&) = &TexMerge::operator=;
+extern "C" { void SurfInfo_SurfInfo(void* __instance) { new (__instance) SurfInfo(); } }
+extern "C" { void SurfInfo_SurfInfo___1__S_SurfInfo(void* __instance, const SurfInfo& _0) { new (__instance) SurfInfo(_0); } }
+SurfInfo& (SurfInfo::*_693)(SurfInfo&&) = &SurfInfo::operator=;
+extern "C" { void CTerrainType_CTerrainType(void* __instance) { new (__instance) CTerrainType(); } }
+extern "C" { void CTerrainType_CTerrainType___1__S_CTerrainType(void* __instance, const CTerrainType& _0) { new (__instance) CTerrainType(_0); } }
+CTerrainType& (CTerrainType::*_694)(CTerrainType&&) = &CTerrainType::operator=;
+extern "C" { void LandSurf_LandSurf(void* __instance) { new (__instance) LandSurf(); } }
+extern "C" { void LandSurf_LandSurf___1__S_LandSurf(void* __instance, const LandSurf& _0) { new (__instance) LandSurf(_0); } }
+LandSurf& (LandSurf::*_695)(LandSurf&&) = &LandSurf::operator=;
+extern "C" { void CTerrainDesc_CTerrainDesc(void* __instance) { new (__instance) CTerrainDesc(); } }
+extern "C" { void CTerrainDesc_CTerrainDesc___1__S_CTerrainDesc(void* __instance, const CTerrainDesc& _0) { new (__instance) CTerrainDesc(_0); } }
+CTerrainDesc& (CTerrainDesc::*_696)(CTerrainDesc&&) = &CTerrainDesc::operator=;
+extern "C" { void EncounterType_EncounterType(void* __instance) { new (__instance) EncounterType(); } }
+extern "C" { void EncounterType_EncounterType___1__S_EncounterType(void* __instance, const EncounterType& _0) { new (__instance) EncounterType(_0); } }
+EncounterType& (EncounterType::*_697)(EncounterType&&) = &EncounterType::operator=;
+extern "C" { void CEncounterDesc_CEncounterDesc(void* __instance) { new (__instance) CEncounterDesc(); } }
+extern "C" { void CEncounterDesc_CEncounterDesc___1__S_CEncounterDesc(void* __instance, const CEncounterDesc& _0) { new (__instance) CEncounterDesc(_0); } }
+CEncounterDesc& (CEncounterDesc::*_698)(CEncounterDesc&&) = &CEncounterDesc::operator=;
+extern "C" { void RegionMisc_RegionMisc(void* __instance) { new (__instance) RegionMisc(); } }
+extern "C" { void RegionMisc_RegionMisc___1__S_RegionMisc(void* __instance, const RegionMisc& _0) { new (__instance) RegionMisc(_0); } }
+RegionMisc& (RegionMisc::*_699)(RegionMisc&&) = &RegionMisc::operator=;
+extern "C" { void CRegionDesc_CRegionDesc(void* __instance) { new (__instance) CRegionDesc(); } }
+extern "C" { void CRegionDesc_CRegionDesc___1__S_CRegionDesc(void* __instance, const CRegionDesc& _0) { new (__instance) CRegionDesc(_0); } }
+CRegionDesc& (CRegionDesc::*_700)(CRegionDesc&&) = &CRegionDesc::operator=;
+extern "C" { void EnumMapper_EnumMapper(void* __instance) { new (__instance) EnumMapper(); } }
+extern "C" { void EnumMapper_EnumMapper___1__S_EnumMapper(void* __instance, const EnumMapper& _0) { new (__instance) EnumMapper(_0); } }
+EnumMapper& (EnumMapper::*_701)(EnumMapper&&) = &EnumMapper::operator=;
+extern "C" { void StringTable_StringTable(void* __instance) { new (__instance) StringTable(); } }
+extern "C" { void StringTable_StringTable___1__S_StringTable(void* __instance, const StringTable& _0) { new (__instance) StringTable(_0); } }
+StringTable& (StringTable::*_702)(StringTable&&) = &StringTable::operator=;
+extern "C" { void EnumIDMap_EnumIDMap(void* __instance) { new (__instance) EnumIDMap(); } }
+extern "C" { void EnumIDMap_EnumIDMap___1__S_EnumIDMap(void* __instance, const EnumIDMap& _0) { new (__instance) EnumIDMap(_0); } }
+EnumIDMap& (EnumIDMap::*_703)(EnumIDMap&&) = &EnumIDMap::operator=;
+extern "C" { void DualEnumIDMap_DualEnumIDMap(void* __instance) { new (__instance) DualEnumIDMap(); } }
+extern "C" { void DualEnumIDMap_DualEnumIDMap___1__S_DualEnumIDMap(void* __instance, const DualEnumIDMap& _0) { new (__instance) DualEnumIDMap(_0); } }
+DualEnumIDMap& (DualEnumIDMap::*_704)(DualEnumIDMap&&) = &DualEnumIDMap::operator=;
+extern "C" { void ACString_ACString(void* __instance) { new (__instance) ACString(); } }
+extern "C" { void ACString_ACString___1__S_ACString(void* __instance, const ACString& _0) { new (__instance) ACString(_0); } }
+ACString& (ACString::*_705)(ACString&&) = &ACString::operator=;
+extern "C" { void ParticleEmitterInfo_ParticleEmitterInfo(void* __instance) { new (__instance) ParticleEmitterInfo(); } }
+extern "C" { void ParticleEmitterInfo_ParticleEmitterInfo___1__S_ParticleEmitterInfo(void* __instance, const ParticleEmitterInfo& _0) { new (__instance) ParticleEmitterInfo(_0); } }
+ParticleEmitterInfo& (ParticleEmitterInfo::*_706)(ParticleEmitterInfo&&) = &ParticleEmitterInfo::operator=;
+extern "C" { void MasterProperty_MasterProperty(void* __instance) { new (__instance) MasterProperty(); } }
+extern "C" { void MasterProperty_MasterProperty___1__S_MasterProperty(void* __instance, const MasterProperty& _0) { new (__instance) MasterProperty(_0); } }
+MasterProperty& (MasterProperty::*_707)(MasterProperty&&) = &MasterProperty::operator=;
+extern "C" { void FontCharDesc_FontCharDesc(void* __instance) { new (__instance) FontCharDesc(); } }
+extern "C" { void FontCharDesc_FontCharDesc___1__S_FontCharDesc(void* __instance, const FontCharDesc& _0) { new (__instance) FontCharDesc(_0); } }
+FontCharDesc& (FontCharDesc::*_708)(FontCharDesc&&) = &FontCharDesc::operator=;
+extern "C" { void Font_Font(void* __instance) { new (__instance) Font(); } }
+extern "C" { void Font_Font___1__S_Font(void* __instance, const Font& _0) { new (__instance) Font(_0); } }
+Font& (Font::*_709)(Font&&) = &Font::operator=;
+extern "C" { void FontLocal_FontLocal(void* __instance) { new (__instance) FontLocal(); } }
+extern "C" { void FontLocal_FontLocal___1__S_FontLocal(void* __instance, const FontLocal& _0) { new (__instance) FontLocal(_0); } }
+FontLocal& (FontLocal::*_710)(FontLocal&&) = &FontLocal::operator=;
+extern "C" { void CLanguageInfo_CLanguageInfo(void* __instance) { new (__instance) CLanguageInfo(); } }
+extern "C" { void CLanguageInfo_CLanguageInfo___1__S_CLanguageInfo(void* __instance, const CLanguageInfo& _0) { new (__instance) CLanguageInfo(_0); } }
+CLanguageInfo& (CLanguageInfo::*_711)(CLanguageInfo&&) = &CLanguageInfo::operator=;
+extern "C" { void BaseProperty_BaseProperty(void* __instance) { new (__instance) BaseProperty(); } }
+extern "C" { void BaseProperty_BaseProperty___1__S_BaseProperty(void* __instance, const BaseProperty& _0) { new (__instance) BaseProperty(_0); } }
+BaseProperty& (BaseProperty::*_712)(BaseProperty&&) = &BaseProperty::operator=;
+extern "C" { void PropertyCollection_PropertyCollection(void* __instance) { new (__instance) PropertyCollection(); } }
+extern "C" { void PropertyCollection_PropertyCollection___1__S_PropertyCollection(void* __instance, const PropertyCollection& _0) { new (__instance) PropertyCollection(_0); } }
+PropertyCollection& (PropertyCollection::*_713)(PropertyCollection&&) = &PropertyCollection::operator=;
+extern "C" { void DBPropertyCollection_DBPropertyCollection(void* __instance) { new (__instance) DBPropertyCollection(); } }
+extern "C" { void DBPropertyCollection_DBPropertyCollection___1__S_DBPropertyCollection(void* __instance, const DBPropertyCollection& _0) { new (__instance) DBPropertyCollection(_0); } }
+DBPropertyCollection& (DBPropertyCollection::*_714)(DBPropertyCollection&&) = &DBPropertyCollection::operator=;
 extern "C" { void DBObj_DBObj(void* __instance) { new (__instance) DBObj(); } }
 extern "C" { void DBObj_DBObj___1__S_DBObj(void* __instance, const DBObj& _0) { new (__instance) DBObj(_0); } }
-DBObj& (DBObj::*_645)(DBObj&&) = &DBObj::operator=;
+DBObj& (DBObj::*_715)(DBObj&&) = &DBObj::operator=;
 extern "C" { void DBObjTableBucket_DBObjTableBucket(void* __instance) { new (__instance) DBObjTableBucket(); } }
 extern "C" { void DBObjTableBucket_DBObjTableBucket___1__S_DBObjTableBucket(void* __instance, const DBObjTableBucket& _0) { new (__instance) DBObjTableBucket(_0); } }
-DBObjTableBucket& (DBObjTableBucket::*_646)(DBObjTableBucket&&) = &DBObjTableBucket::operator=;
+DBObjTableBucket& (DBObjTableBucket::*_716)(DBObjTableBucket&&) = &DBObjTableBucket::operator=;
 extern "C" { void DBObjIntrusiveHashList_HashListData_DBObjIntrusiveHashList_HashListData(void* __instance) { new (__instance) DBObjIntrusiveHashList_HashListData(); } }
 extern "C" { void DBObjIntrusiveHashList_HashListData_DBObjIntrusiveHashList_HashListData___1__S_DBObjIntrusiveHashList_HashListData(void* __instance, const DBObjIntrusiveHashList_HashListData& _0) { new (__instance) DBObjIntrusiveHashList_HashListData(_0); } }
-DBObjIntrusiveHashList_HashListData& (DBObjIntrusiveHashList_HashListData::*_647)(DBObjIntrusiveHashList_HashListData&&) = &DBObjIntrusiveHashList_HashListData::operator=;
+DBObjIntrusiveHashList_HashListData& (DBObjIntrusiveHashList_HashListData::*_717)(DBObjIntrusiveHashList_HashListData&&) = &DBObjIntrusiveHashList_HashListData::operator=;
 extern "C" { void DBOIntrusiveHashData_DBOIntrusiveHashData(void* __instance) { new (__instance) DBOIntrusiveHashData(); } }
 extern "C" { void DBOIntrusiveHashData_DBOIntrusiveHashData___1__S_DBOIntrusiveHashData(void* __instance, const DBOIntrusiveHashData& _0) { new (__instance) DBOIntrusiveHashData(_0); } }
-DBOIntrusiveHashData& (DBOIntrusiveHashData::*_648)(DBOIntrusiveHashData&&) = &DBOIntrusiveHashData::operator=;
+DBOIntrusiveHashData& (DBOIntrusiveHashData::*_718)(DBOIntrusiveHashData&&) = &DBOIntrusiveHashData::operator=;
 extern "C" { void DBOHashTableData_DBOHashTableData(void* __instance) { new (__instance) DBOHashTableData(); } }
 extern "C" { void DBOHashTableData_DBOHashTableData___1__S_DBOHashTableData(void* __instance, const DBOHashTableData& _0) { new (__instance) DBOHashTableData(_0); } }
-DBOHashTableData& (DBOHashTableData::*_649)(DBOHashTableData&&) = &DBOHashTableData::operator=;
-IntrusiveDBObjTable& (IntrusiveDBObjTable::*_650)(IntrusiveDBObjTable&&) = &IntrusiveDBObjTable::operator=;
+DBOHashTableData& (DBOHashTableData::*_719)(DBOHashTableData&&) = &DBOHashTableData::operator=;
+IntrusiveDBObjTable& (IntrusiveDBObjTable::*_720)(IntrusiveDBObjTable&&) = &IntrusiveDBObjTable::operator=;
 extern "C" { void IntrusiveDBObjTable_IntrusiveDBObjTable(void* __instance) { new (__instance) IntrusiveDBObjTable(); } }
 extern "C" { void IntrusiveDBObjTable_IntrusiveDBObjTable___1__S_IntrusiveDBObjTable(void* __instance, const IntrusiveDBObjTable& _0) { new (__instance) IntrusiveDBObjTable(_0); } }
-DBObjTable& (DBObjTable::*_651)(DBObjTable&&) = &DBObjTable::operator=;
+DBObjTable& (DBObjTable::*_721)(DBObjTable&&) = &DBObjTable::operator=;
 extern "C" { void DBObjTable_DBObjTable(void* __instance) { new (__instance) DBObjTable(); } }
 extern "C" { void DBObjTable_DBObjTable___1__S_DBObjTable(void* __instance, const DBObjTable& _0) { new (__instance) DBObjTable(_0); } }
 extern "C" { void DLListData_DLListData(void* __instance) { new (__instance) DLListData(); } }
 extern "C" { void DLListData_DLListData___1__S_DLListData(void* __instance, const DLListData& _0) { new (__instance) DLListData(_0); } }
-DLListData& (DLListData::*_652)(DLListData&&) = &DLListData::operator=;
+DLListData& (DLListData::*_722)(DLListData&&) = &DLListData::operator=;
 extern "C" { void DLListBase_DLListBase(void* __instance) { new (__instance) DLListBase(); } }
 extern "C" { void DLListBase_DLListBase___1__S_DLListBase(void* __instance, const DLListBase& _0) { new (__instance) DLListBase(_0); } }
-DLListBase& (DLListBase::*_653)(DLListBase&&) = &DLListBase::operator=;
+DLListBase& (DLListBase::*_723)(DLListBase&&) = &DLListBase::operator=;
 extern "C" { void ActionMapValue_ActionMapValue(void* __instance) { new (__instance) ActionMapValue(); } }
 extern "C" { void ActionMapValue_ActionMapValue___1__S_ActionMapValue(void* __instance, const ActionMapValue& _0) { new (__instance) ActionMapValue(_0); } }
-ActionMapValue& (ActionMapValue::*_654)(ActionMapValue&&) = &ActionMapValue::operator=;
+ActionMapValue& (ActionMapValue::*_724)(ActionMapValue&&) = &ActionMapValue::operator=;
 extern "C" { void LongHashData_LongHashData(void* __instance) { new (__instance) LongHashData(); } }
 extern "C" { void LongHashData_LongHashData___1__S_LongHashData(void* __instance, const LongHashData& _0) { new (__instance) LongHashData(_0); } }
-LongHashData& (LongHashData::*_655)(LongHashData&&) = &LongHashData::operator=;
+LongHashData& (LongHashData::*_725)(LongHashData&&) = &LongHashData::operator=;
+extern "C" { void PSRefBufferCharData_char_PSRefBufferCharData_char(void* __instance) { new (__instance) PSRefBufferCharData_char(); } }
+extern "C" { void PSRefBufferCharData_char_PSRefBufferCharData_char___1__S_PSRefBufferCharData_char(void* __instance, const PSRefBufferCharData_char& _0) { new (__instance) PSRefBufferCharData_char(_0); } }
+PSRefBufferCharData_char& (PSRefBufferCharData_char::*_726)(PSRefBufferCharData_char&&) = &PSRefBufferCharData_char::operator=;
+extern "C" { void PStringBase_char_PStringBase_char(void* __instance) { new (__instance) PStringBase_char(); } }
+extern "C" { void PStringBase_char_PStringBase_char___1__S_PStringBase_char(void* __instance, const PStringBase_char& _0) { new (__instance) PStringBase_char(_0); } }
+PStringBase_char& (PStringBase_char::*_727)(PStringBase_char&&) = &PStringBase_char::operator=;
+extern "C" { void PSRefBufferCharData_ushort_PSRefBufferCharData_ushort(void* __instance) { new (__instance) PSRefBufferCharData_ushort(); } }
+extern "C" { void PSRefBufferCharData_ushort_PSRefBufferCharData_ushort___1__S_PSRefBufferCharData_ushort(void* __instance, const PSRefBufferCharData_ushort& _0) { new (__instance) PSRefBufferCharData_ushort(_0); } }
+PSRefBufferCharData_ushort& (PSRefBufferCharData_ushort::*_728)(PSRefBufferCharData_ushort&&) = &PSRefBufferCharData_ushort::operator=;
+extern "C" { void PStringBase_ushort_PStringBase_ushort(void* __instance) { new (__instance) PStringBase_ushort(); } }
+extern "C" { void PStringBase_ushort_PStringBase_ushort___1__S_PStringBase_ushort(void* __instance, const PStringBase_ushort& _0) { new (__instance) PStringBase_ushort(_0); } }
+PStringBase_ushort& (PStringBase_ushort::*_729)(PStringBase_ushort&&) = &PStringBase_ushort::operator=;

@@ -1730,61 +1730,7 @@ struct IDirect3DQuery9 : IUnknown
 };
 
 
-struct $BE04DE07FBB24F5591135A12C9DFFCDB
-{
-  char b;
-  char g;
-  char r;
-  char a;
-};
 
-
-union $FFD7734E3C2710FA806EB786F93FEEF0
-{
-  unsigned int color;
-  $BE04DE07FBB24F5591135A12C9DFFCDB __s1;
-};
-
-
-struct RGBAUnion
-{
-  $FFD7734E3C2710FA806EB786F93FEEF0 ___u0;
-};
-
-
-struct __unaligned __declspec(align(1)) FontCharDesc
-{
-  unsigned __int16 m_Unicode;
-  unsigned __int16 m_OffsetX;
-  unsigned __int16 m_OffsetY;
-  char m_Width;
-  char m_Height;
-  char m_HorizontalOffsetBefore;
-  char m_HorizontalOffsetAfter;
-  char m_VerticalOffsetBefore;
-};
-
-
-struct Font : DBObj
-{
-  unsigned int maxCharHeight;
-  unsigned int maxCharWidth;
-  unsigned int numCharacters;
-  FontCharDesc *charDescs;
-  unsigned int m_NumHorizontalBorderPixels;
-  unsigned int m_NumVerticalBorderPixels;
-  int m_BaselineOffset;
-  PStringBase<char> m_ForegroundSurfaceFileName;
-  IDClass<_tagDataID,32,0> m_ForegroundSurfaceDataID;
-  RenderSurface *m_pForegroundSurface;
-  PStringBase<char> m_BackgroundSurfaceFileName;
-  IDClass<_tagDataID,32,0> m_BackgroundSurfaceDataID;
-  RenderSurface *m_pBackgroundSurface;
-  unsigned __int16 minUnicodeChar;
-  unsigned __int16 maxUnicodeChar;
-  unsigned int unicodeRangeLength;
-  unsigned __int16 *characterMap;
-};
 
 
 union $59A0841E51207CD0525C7823E30AD252
@@ -2540,15 +2486,6 @@ struct AC1Legacy_ListIterator<FriendData>Vtbl
   void *(__thiscall *__vecDelDtor)(AC1Legacy_ListIterator<FriendData> *this, unsigned int);
 };
 
-
-struct Subpalette : PackObj
-{
-  IDClass<_tagDataID,32,0> subID;
-  unsigned int offset;
-  unsigned int numcolors;
-  Subpalette *prev;
-  Subpalette *next;
-};
 
 
 struct TextureMapChange : PackObj
