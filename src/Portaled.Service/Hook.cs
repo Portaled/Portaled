@@ -11,6 +11,9 @@ using Decal.Interop.Inject;
 using Portaled.Service;
 using Portaled.Interop;
 using Portaled.Service.Managers;
+using NAudio.Mixer;
+using Portaled.Service.DBObj;
+using NAudio.Wave;
 
 namespace Portaled.Hook
 {
@@ -247,6 +250,29 @@ namespace Portaled.Hook
             }
         }
 
+        public static class DBWave
+        {
+            public static class Unpack
+            {
+                static IntPtr addr = new IntPtr(0x5527B0);
+
+                [UnmanagedFunctionPointer(CallingConvention.ThisCall)]
+                public delegate IntPtr Del(IntPtr dbwave, IntPtr addr, uint size);
+
+                public static Del oldDel = (Del)Marshal.GetDelegateForFunctionPointer(addr, typeof(Del));
+
+                public static void H()
+                {
+                    var newFuncAddr = Marshal.GetFunctionPointerForDelegate(new Del((dbwave, addr, size) =>
+                    {
+                        var result = oldDel(dbwave, addr, size);
+                        var wave = Interop.DBWave.__CreateInstance(dbwave);
+                        return result;
+                    }));
+                    Hook.cHook.Hook(addr, newFuncAddr);
+                }
+            }
+        }
         public static class SmartBox
         {
             //DOESN'T WORK, CRASHES RANDOMLY
@@ -327,6 +353,153 @@ namespace Portaled.Hook
                     Hook.cHook.Hook(addr, newFuncAddr);
                 }
             }
+
+            public static class SerializeFromCachePack
+            {
+                static IntPtr addr = new IntPtr(0x417ac0);
+
+                [UnmanagedFunctionPointer(CallingConvention.StdCall)]
+                public delegate IntPtr Del(IntPtr dbobj, IntPtr cachepack);
+
+                public static Del oldDel = (Del)Marshal.GetDelegateForFunctionPointer(addr, typeof(Del));
+
+                public static void H()
+                {
+                    var newFuncAddr = Marshal.GetFunctionPointerForDelegate(new Del((_dbobj, _cachepack) =>
+                    {
+                        var dbobj = Interop.DBObj.__CreateInstance(_dbobj);
+
+                        var res = oldDel(_dbobj, _cachepack);
+                        DatIOManager.OnSerializeFromCachePack(dbobj);
+                        return res;
+                    }));
+                    Hook.cHook.Hook(addr, newFuncAddr);
+                }
+            }
+        }
+
+        public static class SoundBufRef
+        {
+            public static class Ctor
+            {
+                static IntPtr addr = new IntPtr(0x550d20);
+
+                [UnmanagedFunctionPointer(CallingConvention.ThisCall)]
+                public delegate IntPtr Del(IntPtr _soundBufRef, uint did);
+
+                public static Del oldDel = (Del)Marshal.GetDelegateForFunctionPointer(addr, typeof(Del));
+
+                public static void H()
+                {
+                    var newFuncAddr = Marshal.GetFunctionPointerForDelegate(new Del((_soundBufRef, did) =>
+                    {
+                        var res = oldDel(_soundBufRef, did);
+                        var dbobj = Interop.SoundBufRef.__CreateInstance(_soundBufRef);
+                        return res;
+                    }));
+                    Hook.cHook.Hook(addr, newFuncAddr);
+                }
+            }
+        }
+        public class SoundManager
+        { 
+            public static class CreateSound
+            {
+                static IntPtr addr = new IntPtr(0x551800);
+
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate void Del(uint did);
+
+                public static Del oldDel = (Del)Marshal.GetDelegateForFunctionPointer(addr, typeof(Del));
+
+                public static void H()
+                {
+                    var newFuncAddr = Marshal.GetFunctionPointerForDelegate(new Del((did) =>
+                    {
+                        oldDel(did);
+                    }));
+                    Hook.cHook.Hook(addr, newFuncAddr);
+                }
+            }
+        }
+
+        public static class DBObj
+        {
+            public static class Get
+            {
+                static IntPtr addr = new IntPtr(0x415430);
+
+                [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
+                public delegate IntPtr Del(IntPtr _qdid, IntPtr two);
+
+                public static Del oldDel = (Del)Marshal.GetDelegateForFunctionPointer(addr, typeof(Del));
+                public static void H()
+                {
+                    var del = new Del((_qdid, two) => DatIOManager.ClientFunctions.DBObjGet(_qdid, two));
+                    var newFuncAddr = Marshal.GetFunctionPointerForDelegate(del);
+                    Hook.cHook.Hook(addr, newFuncAddr, 0x0020);
+
+                    /*
+                    if (type == (uint)0xf)
+                    {
+                        var dbobj = Interop.DBWave.__CreateInstance(res.__Instance);
+                        DatIOManager.OnGet<DBWave>(dbobj);
+                        var wavdata = new byte[dbobj.Wave.MNDataSize];
+                        var sz = dbobj.Wave.MNDataSize;
+                        var srcdata = (byte*)dbobj.Wave.MPData;
+                        for (int i = 0; i < sz; i++)
+                        {
+                            wavdata[i] = *srcdata++;
+                        }
+                        using (var ms = new MemoryStream()
+                        {
+                            using (var reader = new WaveFileReader(ms))
+                            {
+                                reader.Read(srcdata, 0, sz);
+                            }
+                        }
+
+                    }
+                    if (id >= (uint)0x0A000000 && id < (uint)0x0A00FFFE)
+                    {
+                        //var dbobj = Interop.DBWave.__CreateInstance(res);
+                    }
+                    return res.__Instance;
+
+                    /*
+                    var dbcache = new IntPtr(0x837bac);
+
+
+
+
+                    for (int i = 0; i < 200; i++)
+                    {
+                        A++;
+                    }
+                    var qdid = QualifiedDataID.__CreateInstance(_qdid);
+                    var id = qdid.ID.Id.Id;
+                    var type = qdid.Type;
+                    if (type == (uint)0xf)
+                    {
+
+                    }
+                    if (id >= (uint)0x0A000000 && id < (uint)0x0A00FFFE)
+                    {
+                        //var dbobj = Interop.DBWave.__CreateInstance(res);
+                    }
+                    if (A > 100)
+                    {
+                        var res = oldDel(_qdid, two);
+                        return res;
+                    }
+
+                    return IntPtr.Zero;*/
+
+                    //    }));
+
+                }
+            }
+
         }
 
         static bool hooked = false;
@@ -337,14 +510,22 @@ namespace Portaled.Hook
 
             hooked = true;
             //  DBCache.PreFetch.H();
+            /*
             DBCache.Get.H();
             DBOCache.GetIfInMemory.H();
            // CSurface.InitEnd.H();
             ImgTex.Serialize.H();
             CLOCache.Ctor.H();
             //  SmartBox.ProcessObjectNetBlobs.H();
+
+            AsyncCache.SerializeFromCachePack.H();
             AsyncCache.BlockingLoadInto.H();
             AsyncCache.BlockingGetFromDisk.H();
+
+            DBWave.Unpack.H();
+            SoundBufRef.Ctor.H();
+            SoundManager.CreateSound.H();*/
+            DBObj.Get.H();
         }
 
         

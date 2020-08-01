@@ -15,12 +15,20 @@ namespace Portaled.Service.Managers
         internal static Portaled.Interop.DBCache _DBCache;
         internal static Portaled.Interop.AsyncCache _AsyncCache;
 
+        /// <summary>
+        /// Type IDs loaded via blocking get from disk
+        /// </summary>
+        static List<uint> dataTypesLoadedAsyncCache;
+
         public unsafe static void Initialize()
         {
             if (_initialized)
                 return;
 
             _initialized = true;
+
+            dataTypesLoadedAsyncCache = new List<uint>() { 1, 2, 3, 6, 7, 8, 10, 11, 12, 14, 26, 27, 34, 35, 36, 37, 38, 40, 42, 43, 44, 46, 49,
+                0x10000002, 0x10000003, 0x10000004, 0x10000005, 0x10000006, 0x10000009, 0x1000000c, 0x10000010, 0x1000001d };
 
             var cacheptr = new IntPtr(*(int*)new IntPtr(0x00837bac).ToPointer());
 
@@ -108,8 +116,8 @@ namespace Portaled.Service.Managers
                     Caches.CacheDict[typeof(DBObj.CMotionTable)] = cache;
                     break;
                 case 15:
-                    cache = new DBCache<DBObj.DBWave>(ocache);
-                    Caches.CacheDict[typeof(DBObj.DBWave)] = cache;
+                    cache = new DBCache<DBWave>(ocache);
+                    Caches.CacheDict[typeof(DBWave)] = cache;
                     break;
                 case 16:
                     cache = new DBCache<DBObj.CEnvironment>(ocache);
@@ -253,38 +261,122 @@ namespace Portaled.Service.Managers
             Caches.CacheDictPtr[cache.Underlying.__Instance] = cache;
         }
 
-        internal static class Caches
-        {
-            internal static Dictionary<Type, DBCache> CacheDict = new Dictionary<Type, DBCache>();
-            internal static Dictionary<IntPtr, DBCache> CacheDictPtr = new Dictionary<IntPtr, DBCache>();
-        }
-
         internal static void OnBeforeBlockingLoadInto(Interop.DBObj dbobj, QualifiedDataID qdid, DBOCache dbocache)
         {
             if (!Caches.CacheDictPtr.TryGetValue(dbocache.__Instance, out var dbocacheex))
                 return;
-            dbocacheex.OnBeforeBlockingLoadIntoBase(dbobj, qdid);
         }
 
         internal static void OnAfterBlockingLoadInto(Interop.DBObj dbobj, QualifiedDataID qdid, DBOCache dbocache)
         {
             if (!Caches.CacheDictPtr.TryGetValue(dbocache.__Instance, out var dbocacheex))
                 return;
-            dbocacheex.OnAfterBlockingLoadIntoBase(dbobj, qdid);
         }
 
         internal static void OnBeforeBlockingGetFromDisk(Interop.DBObj dbobj, QualifiedDataID qdid, DBOCache dbocache)
         {
+
             if (!Caches.CacheDictPtr.TryGetValue(dbocache.__Instance, out var dbocacheex))
                 return;
-            dbocacheex.OnBeforeBlockingGetFromDiskBase(dbobj, qdid);
         }
 
         internal static void OnAfterBlockingGetFromDisk(Interop.DBObj dbobj, QualifiedDataID qdid, DBOCache dbocache)
         {
-            if (!Caches.CacheDictPtr.TryGetValue(dbocache.__Instance, out var dbocacheex))
+            //if (dataTypesLoadedAsyncCache.Contains(qdid.Type))
+            //{
+                EnsureObjLoad(qdid, dbobj);
+            //}
+        }
+
+        internal static void OnSerializeFromCachePack(Interop.DBObj dbobj)
+        {
+            var id = dbobj.MDID.Id.Id;
+            if (id >= 0x0A000000 && id < 0x0A00FFFE)
+            {
+
+            }
+        }
+
+        /// <summary>
+        /// Called each time after the DBObj is requested by the game engine.
+        /// </summary>
+        /// <param name="qdid"></param>
+        /// <param name="dbobj"></param>
+        internal static void OnGetFromDB(QualifiedDataID qdid, Interop.DBObj dbobj)
+        {
+            var ptr = dbobj.__Instance;
+            if (Caches.trackedObjects.Contains(ptr))
                 return;
-            dbocacheex.OnAfterBlockingGetFromDiskBase(dbobj, qdid);
+            EnsureObjLoad(qdid, dbobj);
+        }
+
+        /// <summary>
+        /// Call this method to ensure that the OnObjLoad is triggered if necessary
+        /// </summary>
+        private static void EnsureObjLoad(QualifiedDataID qdid, Interop.DBObj dbobj)
+        {
+            if (dbobj.MPMaintainer == null)
+            {
+                return;
+            }
+            if (!Caches.CacheDictPtr.TryGetValue(dbobj.MPMaintainer.__Instance, out var dbocacheex))
+                return;
+            if (Caches.trackedObjects.Contains(dbobj.__Instance))
+                return;
+            OnObjLoad(dbocacheex, qdid, dbobj);
+        }
+
+        /// <summary>
+        /// Called when an object is loaded for the first time.
+        /// Note that the timing of this function call may or may not be precise, 
+        /// determining on the methodology the game engine used to load the object. 
+        /// This is our best guess for when the object is loaded for the first time.
+        /// </summary>
+        /// <param name="qdid"></param>
+        /// <param name="dbobj"></param>
+        private static void OnObjLoad(DBCache cache, QualifiedDataID qdid, Interop.DBObj dbobj)
+        {
+            Caches.trackedObjects.Add(dbobj.__Instance);
+            cache.OnLoad(dbobj, qdid);
+        }
+
+        static bool Written = false;
+        public static void Write(string name)
+        {
+            if (Written)
+                return;
+            Written = true;
+            File.WriteAllText(@"portaled-trace.txt", name);
+        }
+        public static class ClientFunctions
+        {
+            /// <summary>
+            /// The rewritten function that AC Client is actually using in order to retrieve the resource by DID
+            /// </summary>
+            /// <param name="qdid"></param>
+            /// <param name="obj"></param>
+            /// <returns></returns>
+            public static IntPtr DBObjGet(IntPtr _qdid, IntPtr _unused)
+            {
+                var cache = DatIOManager._AsyncCache;
+                if (cache == null)
+                    return IntPtr.Zero;
+                var qdid = QualifiedDataID.__CreateInstance(_qdid);
+                var res = cache.BlockingGet(2, qdid);
+                if (res == null)
+                    return IntPtr.Zero;
+
+                DatIOManager.OnGetFromDB(qdid, res);
+                
+                return res.__Instance;
+            }
+        }
+
+        internal static class Caches
+        {
+            internal static Dictionary<Type, DBCache> CacheDict = new Dictionary<Type, DBCache>();
+            internal static Dictionary<IntPtr, DBCache> CacheDictPtr = new Dictionary<IntPtr, DBCache>();
+            internal static HashSet<IntPtr> trackedObjects = new HashSet<IntPtr>();
         }
     }
 
@@ -292,18 +384,16 @@ namespace Portaled.Service.Managers
     {
         public uint DBType { get; protected set; }
         public IntPtr Allocator { get; protected set; }
+        
         public Portaled.Interop.DBOCache Underlying { get; protected set; }
 
-        internal abstract void OnAfterBlockingGetFromDiskBase(Interop.DBObj dbobj, QualifiedDataID qdid);
-        internal abstract void OnBeforeBlockingGetFromDiskBase(Interop.DBObj dbobj, QualifiedDataID qdid);
-
-        internal abstract void OnBeforeBlockingLoadIntoBase(Interop.DBObj dbobj, QualifiedDataID qdid);
-        internal abstract void OnAfterBlockingLoadIntoBase(Interop.DBObj dbobj, QualifiedDataID qdid);
+        internal abstract void OnLoad(Interop.DBObj dbobj, QualifiedDataID qdid);
     }
 
     public class DBCache<T> : DBCache
         where T : Portaled.Service.DBObj.DBObjEx
     {
+        protected Dictionary<IntPtr, T> managedCache = new Dictionary<IntPtr, T>();
         internal DBCache(Portaled.Interop.DBOCache internalCache)
         {
             this.Underlying = internalCache;
@@ -316,11 +406,12 @@ namespace Portaled.Service.Managers
             try
             {
                 var qdid = new Portaled.Interop.QualifiedDataID(did, DBType);
-                var obj = DatIOManager._AsyncCache.BlockingGet(DBType, qdid);
-                if (obj == null)
+                var obj = DatIOManager.ClientFunctions.DBObjGet(qdid.__Instance, IntPtr.Zero);
+                if (obj == IntPtr.Zero)
                     return null;
-                var objEx = DBObj.DBObjEx.CreateFrom(obj, DBType);
-                return (T)objEx;
+                if (!DatIOManager.Caches.trackedObjects.Contains(obj))
+                    return null;
+                return managedCache[obj];
             }
             catch
             {
@@ -328,31 +419,11 @@ namespace Portaled.Service.Managers
             }
         }
 
-        internal virtual void OnBeforeBlockingLoadInto() { }
-        internal virtual void OnAfterBlockingLoadInto() { }
-
-        internal override void OnBeforeBlockingLoadIntoBase(Interop.DBObj dbobj, QualifiedDataID qdid)
+        internal override void OnLoad(Interop.DBObj dbobj, QualifiedDataID qdid)
         {
             T obj = (T)DBObjEx.CreateFrom(dbobj, qdid.Type);
-            obj.OnBeforeBlockingLoadInto();
-        }
-
-        internal override void OnAfterBlockingLoadIntoBase(Interop.DBObj dbobj, QualifiedDataID qdid)
-        {
-            T obj = (T)DBObjEx.CreateFrom(dbobj, qdid.Type);
-            obj.OnAfterBlockingLoadInto();
-        }
-
-        internal override void OnBeforeBlockingGetFromDiskBase(Interop.DBObj dbobj, QualifiedDataID qdid)
-        {
-            T obj = (T)DBObjEx.CreateFrom(dbobj, qdid.Type);
-            obj.OnBeforeBlockingGetFromDisk();
-        }
-
-        internal override void OnAfterBlockingGetFromDiskBase(Interop.DBObj dbobj, QualifiedDataID qdid)
-        {
-            T obj = (T)DBObjEx.CreateFrom(dbobj, qdid.Type);
-            obj.OnAfterBlockingGetFromDisk();
+            managedCache[dbobj.__Instance] = obj;
+            obj.OnLoad();
         }
     }
 }
