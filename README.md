@@ -2,11 +2,16 @@
 Client-Side Content Driver for the Asheron's Call MMORPG
 
 May 2023 note: Project has been idle, but I'm here - Have some new ideas for this but not the time to do it. Main challenge that stopped this in 2020 was the very outdated tooling that Decal uses, and I could not find a working method in my spare time to hook most of the game client functions needed. Here are a few tools that look promising (and I'm totally cool with adopting a GPL license if needed): 
-https://github.com/goatcorp/FFXIVQuickLauncher/tree/master. 
-https://github.com/xivdev/Penumbra. 
-https://github.com/goatcorp/goatcorp.Reloaded.Hooks. 
-https://github.com/goatcorp/goatcorp.Reloaded.Memory.Buffers. 
-https://github.com/goatcorp/FFXIVClientStructs/tree/main/ida. 
+
+https://github.com/goatcorp/FFXIVQuickLauncher/tree/master
+
+https://github.com/xivdev/Penumbra
+
+https://github.com/goatcorp/goatcorp.Reloaded.Hooks
+
+https://github.com/goatcorp/goatcorp.Reloaded.Memory.Buffers
+
+https://github.com/goatcorp/FFXIVClientStructs/tree/main/ida
 
 
 
